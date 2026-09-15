@@ -1,0 +1,98 @@
+{
+  "FAVORABLE": {
+    "ui_status": "FAVORABLE_CONDITIONS",
+    "headline": "Weather conditions are favorable for disease development.",
+    "short_label": "Favorable conditions",
+    "attention_level": "INCREASED_ATTENTION"
+  },
+  "PARTIALLY_FAVORABLE": {
+    "ui_status": "PARTLY_FAVORABLE_CONDITIONS",
+    "headline": "Some weather conditions may support disease development.",
+    "short_label": "Partly favorable",
+    "attention_level": "MONITOR"
+  },
+  "NOT_FAVORABLE_BY_QUANTIFIED_RULES": {
+    "ui_status": "CONDITIONS_NOT_CURRENTLY_FAVORABLE",
+    "headline": "Current weather does not match the quantified favorable conditions used by this disease model.",
+    "short_label": "Not currently favorable",
+    "attention_level": "ROUTINE_MONITORING"
+  },
+  "WETNESS_PROXY_AVAILABLE_DIRECT_MODEL_NOT_EXECUTED": {
+    "ui_status": "WET_WEATHER_SIGNAL",
+    "headline": "Wet-weather conditions are present, but the full disease model cannot be run because direct leaf-wetness duration is unavailable.",
+    "short_label": "Wet-weather signal",
+    "attention_level": "MONITOR"
+  },
+  "ENVIRONMENTAL_FACTORS_AVAILABLE_DISEASE_SPECIFIC_THRESHOLD_NOT_FROZEN": {
+    "ui_status": "ENVIRONMENTAL_CONTEXT_AVAILABLE",
+    "headline": "Weather factors relevant to this disease are available, but current evidence is insufficient for a numerical risk classification.",
+    "short_label": "Environmental context available",
+    "attention_level": "MONITOR"
+  },
+  "INSUFFICIENT_FOR_NUMERIC_MODEL": {
+    "ui_status": "LIMITED_ASSESSMENT",
+    "headline": "Additional field or disease-history information is required for a stronger assessment.",
+    "short_label": "Limited assessment",
+    "attention_level": "REVIEW_REQUIRED"
+  },
+  "WEATHER_CONTEXT_ONLY_INCIDENCE_HISTORY_MISSING": {
+    "ui_status": "WEATHER_CONTEXT_ONLY",
+    "headline": "Weather information is available, but recent disease history is required before this model can be applied.",
+    "short_label": "Disease history required",
+    "attention_level": "REVIEW_REQUIRED"
+  },
+  "BOLLWORM_DETECTED_SPECIES_CONFIRMATION_REQUIRED": {
+    "ui_status": "SPECIES_CONFIRMATION_REQUIRED",
+    "headline": "Bollworm activity was identified, but the species must be confirmed before species-specific forecasting is used.",
+    "short_label": "Species confirmation required",
+    "attention_level": "OFFICER_REVIEW"
+  },
+  "PREVENTION_ONLY": {
+    "ui_status": "PREVENTION_AND_MONITORING",
+    "headline": "No active disease treatment forecast is required. Continue routine prevention and monitoring.",
+    "short_label": "Continue monitoring",
+    "attention_level": "ROUTINE_MONITORING"
+  },
+  "NOT_FAVORABLE_BY_REPORTED_RANGE": {
+    "ui_label": "CONDITIONS_NOT_CURRENTLY_FAVORABLE",
+    "short_label": "Conditions not currently favorable",
+    "headline": "The main weather conditions reported as favorable for this disease are not currently matched.",
+    "attention_level": "ROUTINE_MONITORING"
+  },
+  "TEMPERATURE_FAVORABLE_QUALITATIVE_SUPPORT_REQUIRED": {
+    "ui_label": "TEMPERATURE_FAVORABLE_OTHER_FACTORS_SUPPORTIVE",
+    "short_label": "Temperature favorable",
+    "headline": "Temperature is within the reported favorable range for this disease. Humidity and rainfall may provide additional support, so continued monitoring is advised.",
+    "attention_level": "MONITOR"
+  },
+  "TEMPERATURE_NOT_IN_REPORTED_FAVORABLE_RANGE": {
+    "ui_label": "TEMPERATURE_NOT_CURRENTLY_FAVORABLE",
+    "short_label": "Temperature not currently favorable",
+    "headline": "Temperature is outside the reported favorable range for this disease, although field monitoring should continue.",
+    "attention_level": "ROUTINE_MONITORING"
+  },
+  "MOISTURE_PROXY_AVAILABLE_FULL_FAST_MODEL_NOT_EXECUTED": {
+    "ui_label": "WET_WEATHER_SIGNAL_EARLY_BLIGHT",
+    "short_label": "Wet-weather signal",
+    "headline": "Rainfall or high humidity may support early blight development, but the full disease model cannot be run because direct leaf-wetness duration is unavailable.",
+    "attention_level": "MONITOR"
+  },
+  "MOISTURE_PRESSURE_INDICATORS_AVAILABLE_FULL_MODEL_NOT_EXECUTED": {
+    "ui_label": "MOISTURE_PRESSURE_SIGNAL_LATE_BLIGHT",
+    "short_label": "Moisture-pressure signal",
+    "headline": "Moisture-related weather conditions are present, but the complete late blight infection model cannot be executed without the required direct disease-model inputs.",
+    "attention_level": "MONITOR"
+  },
+  "FAVORABLE_ENVIRONMENT": {
+    "ui_label": "FAVORABLE_ENVIRONMENT",
+    "short_label": "Favorable conditions",
+    "headline": "Temperature and humidity are within reported conditions that may support leaf mold development.",
+    "attention_level": "INCREASED_ATTENTION"
+  },
+  "HIGHLY_FAVORABLE_ENVIRONMENT": {
+    "ui_label": "HIGHLY_FAVORABLE_ENVIRONMENT",
+    "short_label": "Highly favorable conditions",
+    "headline": "Temperature and humidity closely match reported conditions that strongly support leaf mold development.",
+    "attention_level": "INCREASED_ATTENTION"
+  }
+}

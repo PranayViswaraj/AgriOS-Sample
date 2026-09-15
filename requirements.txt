@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2-binary
+geoalchemy2
+shapely
+python-multipart
+pydantic
+torch
+torchvision
+pillow

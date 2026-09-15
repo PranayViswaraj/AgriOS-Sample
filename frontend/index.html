@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AgriOS — GIS &amp; Field Inputs</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/ort.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="icon-sprout" viewBox="0 0 24 24">
+      <path d="M12 21V11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      <path d="M12 12C12 7 8 5 4 5c0 5 3 8 8 7Z" fill="currentColor"/>
+      <path d="M12 15C12 10.5 16 8 20 8c0 5-3 8-8 7Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-leaf-search" viewBox="0 0 24 24">
+      <path d="M11 4c5 0 8 3 8 7-6 1-9-2-9-7Z" fill="currentColor"/>
+      <circle cx="10.5" cy="15.5" r="5" stroke="currentColor" stroke-width="1.8" fill="none"/>
+      <path d="M14.3 19.3 18 23" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-bug" viewBox="0 0 24 24">
+      <ellipse cx="12" cy="14" rx="5" ry="6.5" stroke="currentColor" stroke-width="1.8" fill="none"/>
+      <path d="M12 7.5V4M9 6 7.5 4M15 6l1.5-2M4 12h3M17 12h3M4.5 18l3-2M19.5 18l-3-2M4.5 8l3 2M19.5 8l-3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-bars" viewBox="0 0 24 24">
+      <path d="M5 21V10M12 21V4M19 21v-7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="icon-funnel" viewBox="0 0 24 24">
+      <path d="M4 5h16l-6 8v6l-4 2v-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+    </symbol>
+    <symbol id="icon-map-pin" viewBox="0 0 24 24">
+      <path d="M12 22s7-7.5 7-12.5A7 7 0 0 0 5 9.5C5 14.5 12 22 12 22Z" stroke="currentColor" stroke-width="1.8" fill="none"/>
+      <circle cx="12" cy="9.5" r="2.4" fill="currentColor"/>
+    </symbol>
+    <symbol id="icon-archive" viewBox="0 0 24 24">
+      <rect x="3.5" y="4.5" width="17" height="4.5" rx="1" stroke="currentColor" stroke-width="1.8" fill="none"/>
+      <path d="M4.5 9.5V18a1.5 1.5 0 0 0 1.5 1.5h12A1.5 1.5 0 0 0 19.5 18V9.5" stroke="currentColor" stroke-width="1.8" fill="none"/>
+      <path d="M10 13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="shell">
+
+  <aside class="rail" id="rail">
+    <div class="rail-brand">
+      <span class="rail-mark">AO</span>
+      <div>
+        <div class="rail-title">AgriOS</div>
+        <div class="rail-sub">Field &amp; GIS Register</div>
+      </div>
+    </div>
+
+    <nav class="rail-nav" aria-label="Sections">
+      <a href="#sec-farm"><svg class="rail-icon"><use href="#icon-sprout"/></svg>Register farm</a>
+      <a href="#sec-obs"><svg class="rail-icon"><use href="#icon-leaf-search"/></svg>Field observation</a>
+      <a href="#sec-trap"><svg class="rail-icon"><use href="#icon-bug"/></svg>Pest trap input</a>
+      <a href="#sec-stats"><svg class="rail-icon"><use href="#icon-bars"/></svg>Statistics</a>
+      <a href="#sec-filters"><svg class="rail-icon"><use href="#icon-funnel"/></svg>Filters</a>
+      <a href="#sec-ai"><svg class="rail-icon"><use href="#icon-bars"/></svg>AI diagnosis</a>
+      <a href="#sec-risk"><svg class="rail-icon"><use href="#icon-bars"/></svg>Risk alerts</a>
+      <a href="#sec-advisory"><svg class="rail-icon"><use href="#icon-leaf-search"/></svg>IPDM advisory</a>
+      <a href="#sec-response"><svg class="rail-icon"><use href="#icon-archive"/></svg>Response loop</a>
+      <a href="#sec-map"><svg class="rail-icon"><use href="#icon-map-pin"/></svg>GIS map</a>
+      <a href="#sec-cases"><svg class="rail-icon"><use href="#icon-archive"/></svg>Saved cases</a>
+    </nav>
+
+    <div class="rail-foot">
+      <div class="rail-foot-row"><span>Farms</span><b id="railFarms">0</b></div>
+      <div class="rail-foot-row"><span>Open cases</span><b id="railCases">0</b></div>
+      <button type="button" class="ghost-btn" id="seedBtn">Load sample data</button>
+      <button type="button" class="ghost-btn" id="exportBtn">Export data (.json)</button>
+      <button type="button" class="ghost-btn danger" id="clearDataBtn">Clear all data</button>
+    </div>
+  </aside>
+
+  <button class="rail-toggle" id="railToggle" aria-expanded="false" aria-controls="rail">Menu</button>
+
+  <main id="main">
+
+    <header class="hero">
+      <div class="hero-art">
+        <svg class="hero-svg" viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Illustration of terraced farmland at sunrise" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F6E3B4"/>
+      <stop offset="55%" stop-color="#F1ECDE"/>
+      <stop offset="100%" stop-color="#EDE7D2"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FBD98A" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#FBD98A" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="420" fill="url(#skyGrad)"/>
+  <g class="hero-sun">
+    <circle cx="970" cy="110" r="90" fill="url(#sunGlow)"/>
+    <circle cx="970" cy="110" r="34" fill="#F5C36B"/>
+  </g>
+  <g class="hero-birds">
+    <path d="M143,70 Q146.5,63 150,70 Q153.5,63 157,70" stroke="#3A3220" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <path d="M175,85 Q177.5,80 180,85 Q182.5,80 185,85" stroke="#3A3220" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <path d="M206,68 Q208.0,64 210,68 Q212.0,64 214,68" stroke="#3A3220" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <path d="M694,95 Q697.0,89 700,95 Q703.0,89 706,95" stroke="#3A3220" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.5"/>
+    <path d="M725,80 Q727.5,75 730,80 Q732.5,75 735,80" stroke="#3A3220" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.5"/>
+  </g>
+  <path d="M0,255 Q200,225 430,245 Q650,262 900,232 Q1060,212 1200,238 L1200,270 L0,270 Z" fill="#B7C99A" opacity="0.8"/>
+  <path d="M0,257 Q300.0,247 600.0,252 Q900.0,257 1200,249.5 L1200,268 L0,268 Z" fill="#6E8C4E"/>
+  <path d="M0,276 Q300.0,260 600.0,268 Q900.0,276 1200,264.0 L1200,286 L0,286 Z" fill="#5C7A3F"/>
+  <path d="M0,297 Q300.0,275 600.0,286 Q900.0,297 1200,280.5 L1200,304 L0,304 Z" fill="#4F6E38"/>
+  <path d="M0,309 Q300.0,299 600.0,304 Q900.0,309 1200,301.5 L1200,322 L0,322 Z" fill="#43602F"/>
+  <path d="M0,330 Q300.0,314 600.0,322 Q900.0,330 1200,318.0 L1200,340 L0,340 Z" fill="#3A5528"/>
+  <path d="M0,351 Q300.0,329 600.0,340 Q900.0,351 1200,334.5 L1200,358 L0,358 Z" fill="#6E8C4E"/>
+  <path d="M0,363 Q300.0,353 600.0,358 Q900.0,363 1200,355.5 L1200,378 L0,378 Z" fill="#5C7A3F"/>
+  <path d="M0,386 Q300.0,370 600.0,378 Q900.0,386 1200,374.0 L1200,400 L0,400 Z" fill="#4F6E38"/>
+  <path d="M0,411 Q300.0,389 600.0,400 Q900.0,411 1200,394.5 L1200,420 L0,420 Z" fill="#43602F"/>
+  <g class="hero-tree" transform="translate(120,300)">
+    <path d="M0,80 L4,20" stroke="#3A3220" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="4" cy="0" r="26" fill="#4F6E38"/>
+    <circle cx="-14" cy="14" r="18" fill="#5C7A3F"/>
+    <circle cx="20" cy="10" r="20" fill="#5C7A3F"/>
+  </g>
+  <g class="hero-farmer" transform="translate(860,300)">
+    <ellipse cx="0" cy="86" rx="20" ry="4" fill="#2A2416" opacity="0.25"/>
+    <path d="M-3,20 Q0,10 5,20 L7,20 Q3,6 -5,20 Z" fill="#232017"/>
+    <circle cx="1" cy="16" r="6" fill="#3A3220"/>
+    <path d="M-9,26 Q1,18 11,26 L14,58 Q1,66 -12,58 Z" fill="#47643A"/>
+    <path d="M-9,30 L-24,44" stroke="#3A3220" stroke-width="4" stroke-linecap="round"/>
+    <path d="M-24,44 L-24,10" stroke="#5B4630" stroke-width="3" stroke-linecap="round"/>
+    <path d="M-30,10 L-18,10" stroke="#3A3220" stroke-width="4" stroke-linecap="round"/>
+    <path d="M-6,58 L-10,84" stroke="#232017" stroke-width="5" stroke-linecap="round"/>
+    <path d="M6,58 L10,84" stroke="#232017" stroke-width="5" stroke-linecap="round"/>
+  </g>
+</svg>
+      </div>
+      <div class="hero-text">
+        <p class="hero-kicker">Field &amp; GIS register</p>
+        <h1>Every plot, every symptom, one map.</h1>
+        <p class="hero-lede">Log farms, walk the field, note what the crop is telling you, and watch it collect on the map by taluk and district — no signal required until you sync.</p>
+      </div>
+    </header>
+
+    <section class="data-overview" aria-label="Operations overview">
+      <div class="overview-card">
+        <div class="overview-top"><span>Active cases</span><em>+12.4%</em></div>
+        <strong>248</strong>
+        <small>Across registered farm clusters</small>
+        <div class="mini-progress"><span style="width:74%"></span></div>
+      </div>
+      <div class="overview-card highlight">
+        <div class="overview-top"><span>High-risk plots</span><em>Critical</em></div>
+        <strong>37</strong>
+        <small>8 require immediate triage</small>
+        <div class="mini-progress danger"><span style="width:82%"></span></div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-top"><span>Trap readings</span><em>Live</em></div>
+        <strong>1,284</strong>
+        <small>Collected over last 7 days</small>
+        <div class="mini-progress"><span style="width:63%"></span></div>
+      </div>
+      <div class="overview-card">
+        <div class="overview-top"><span>Forecast confidence</span><em>AI</em></div>
+        <strong>88.6%</strong>
+        <small>Model confidence index</small>
+        <div class="mini-progress success"><span style="width:89%"></span></div>
+      </div>
+    </section>
+
+    <section class="ops-command-panel" aria-label="Operations overview">
+      <div class="ops-topbar">
+        <div class="status-pill">
+          <span class="live-dot"></span>
+          <span>AgriOS live field monitoring</span>
+        </div>
+        <span class="sync-text">Last sync: <strong id="lastSyncLabel">just now</strong></span>
+      </div>
+
+      <div class="ops-actions">
+        <a class="ops-action" href="#sec-map">
+          <span class="ops-icon">◎</span>
+          <span>View hotspots</span>
+        </a>
+        <a class="ops-action" href="#sec-obs">
+          <span class="ops-icon">✦</span>
+          <span>Log field visit</span>
+        </a>
+        <a class="ops-action" href="#sec-ai">
+          <span class="ops-icon">◌</span>
+          <span>Run model preview</span>
+        </a>
+        <a class="ops-action primary" href="#sec-cases">
+          <span class="ops-icon">＋</span>
+          <span>Review case queue</span>
+        </a>
+      </div>
+
+      <div class="ops-pipeline" aria-label="Case management workflow">
+        <div class="pipeline-step active">
+          <span class="step-index">1</span>
+          <div><strong>Farmer case</strong><small>Field intake</small></div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step">
+          <span class="step-index">2</span>
+          <div><strong>AI detection</strong><small>Model review</small></div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step">
+          <span class="step-index">3</span>
+          <div><strong>Risk forecast</strong><small>Weather + trend</small></div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step">
+          <span class="step-index">4</span>
+          <div><strong>IPDM action</strong><small>Protocol plan</small></div>
+        </div>
+        <div class="pipeline-arrow">→</div>
+        <div class="pipeline-step">
+          <span class="step-index">5</span>
+          <div><strong>Officer review</strong><small>Decision loop</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="sec-farm">
+      <div class="card-head">
+        <span class="card-num"><svg class="card-icon"><use href="#icon-sprout"/></svg>01</span>
+        <div>
+          <h2>Register farm</h2>
+          <p>One entry per plot. Everything below links back to this.</p>
+        </div>
+      </div>
+      <form id="farmForm" class="form-grid" novalidate>
+        <label class="field"><span>Farm name</span><input id="farmName" required></label>
+        <label class="field"><span>Farmer name</span><input id="farmerName" required></label>
+        <label class="field"><span>Taluk</span><input id="taluk" required></label>
+        <label class="field"><span>District</span><input id="district" required></label>
+        <label class="field"><span>Crop</span><input id="crop" required></label>
+        <label class="field"><span>Latitude</span><input id="farmLat" type="number" step="any" required></label>
+        <label class="field"><span>Longitude</span><input id="farmLng" type="number" step="any" required></label>
+        <div class="field-actions">
+          <button type="button" class="ghost-btn" onclick="useLocation('farmLat','farmLng')">Use my location</button>
+          <button class="primary-btn">Save farm</button>
+        </div>
+      </form>
+      <p class="form-note" id="farmNote" role="status"></p>
+    </section>
+
+    <section class="card" id="sec-obs">
+      <div class="card-head">
+        <span class="card-num"><svg class="card-icon"><use href="#icon-leaf-search"/></svg>02</span>
+        <div>
+          <h2>Field observation</h2>
+          <p>What you see on the plant, right now.</p>
+        </div>
+      </div>
+      <form id="obsForm" class="form-grid" novalidate>
+        <label class="field"><span>Farm</span>
+          <select id="obsFarm" required><option value="">Select a registered farm</option></select>
+        </label>
+        <label class="field"><span>Crop</span><input id="obsCrop" required></label>
+        <label class="field"><span>Growth stage</span><input id="growthStage" placeholder="e.g. tillering, flowering"></label>
+        <label class="field"><span>Observed symptom</span><input id="symptom" placeholder="e.g. yellowing leaf tips"></label>
+        <label class="field"><span>Disease / pest</span><input id="diseasePest" placeholder="optional"></label>
+        <label class="field"><span>Severity</span>
+          <select id="severity">
+            <option value="">Not assessed</option>
+            <option>Mild</option>
+            <option>Moderate</option>
+            <option>Severe</option>
+          </select>
+        </label>
+        <label class="field"><span>Latitude</span><input id="obsLat" type="number" step="any" required></label>
+        <label class="field"><span>Longitude</span><input id="obsLng" type="number" step="any" required></label>
+        <label class="field"><span>Photo</span><input id="obsImage" type="file" accept="image/*" capture="environment"></label>
+        <div class="field-actions">
+          <button type="button" class="ghost-btn" onclick="useLocation('obsLat','obsLng')">Use my GPS</button>
+          <button class="primary-btn">Save observation</button>
+        </div>
+      </form>
+      <p class="form-note" id="obsNote" role="status"></p>
+      <div id="aiDiagnosisResult" class="ai-diagnosis-result hidden" aria-live="polite"></div>
+    </section>
+
+    <section class="card" id="sec-trap">
+      <div class="card-head">
+        <span class="card-num"><svg class="card-icon"><use href="#icon-bug"/></svg>03</span>
+        <div>
+          <h2>Pest trap input</h2>
+          <p>Trap counts feed the pest pressure reading on the map.</p>
+        </div>
+      </div>
+      <form id="trapForm" class="form-grid" novalidate>
+        <label class="field"><span>Farm</span>
+          <select id="trapFarm" required><option value="">Select a registered farm</option></select>
+        </label>
+        <label class="field"><span>Trap type</span>
+          <select id="trapType" required>
+            <option value="">Select trap type</option>
+            <option>Sticky Trap</option>
+            <option>Light Trap</option>
+            <option>Manual Count</option>
+          </select>
+        </label>
+        <label class="field"><span>Pest name</span><input id="pestName" placeholder="e.g. fall armyworm"></label>
+        <label class="field"><span>Count</span><input id="pestCount" type="number" min="0" value="0" required></label>
+        <label class="field"><span>Latitude</span><input id="trapLat" type="number" step="any" required></label>
+        <label class="field"><span>Longitude</span><input id="trapLng" type="number" step="any" required></label>
+        <label class="field"><span>Photo</span><input id="trapImage" type="file" accept="image/*" capture="environment"></label>
+        <div class="field-actions">
+          <button type="button" class="ghost-btn" onclick="useLocation('trapLat','trapLng')">Use my GPS</button>
+          <button class="primary-btn">Save trap input</button>
+        </div>
+      </form>
+      <p class="form-note" id="trapNote" role="status"></p>
+    </section>
+
+    <section class="card" id="sec-stats">
+      <div class="card-head">
+        <span class="card-num"><svg class="card-icon"><use href="#icon-bars"/></svg>04</span>
+        <div>
+          <h2>Statistics</h2>
+          <p>Reflects the filters set below.</p>
+        </div>
+      </div>
+      <div class="stats-toolbar">
+        <label class="field compact">
+          <span>Quick search</span>
+          <input id="filterSearch" type="search" placeholder="Farm, crop, pest, district">
+        </label>
+        <div class="quick-chip-group" aria-label="Quick filters">
+          <button type="button" class="chip-btn active" data-quick="all">All</button>
+          <button type="button" class="chip-btn" data-quick="severe">High risk</button>
+          <button type="button" class="chip-btn" data-quick="recent">Recent 7d</button>
+        </div>
+      </div>
+      <div id="statsGrid" class="stats-grid"></div>
+      <div id="dashboardInsights" class="dashboard-insights" aria-live="polite"></div>
+      <div class="stats-columns">
+        <div class="stats-block">
+          <h3>Severity mix</h3>
+          <div id="severityBars" class="bar-list"></div>
+        </div>
+        <div class="stats-block">
+          <h3>Top pests &amp; diseases</h3>
+          <ol id="topPests" class="rank-list"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="sec-filters">
+      <div class="card-head">
+        <span class="card-num"><svg class="card-icon"><use href="#icon-funnel"/></svg>05</span>
+        <div>
+          <h2>Filters</h2>
+          <p>Narrows the map, statistics, and saved cases below.</p>
+        </div>
+      </div>
+      <div class="filter-grid">
+        <label class="field"><span>District</span><select id="filterDistrict"><option value="">All districts</option></select></label>
+        <label class="field"><span>Taluk</span><select id="filterTaluk"><option value="">All taluks</option></select></label>
+        <label class="field"><span>Crop</span><select id="filterCrop"><option value="">All crops</option></select></label>
+        <label class="field"><span>Disease / pest</span><select id="filterDisease"><option value="">All diseases / pests</option></select></label>
+        <label class="field"><span>Severity</span><select id="filterSeverity"><option value="">All severities</option></select></label>
+        <label class="field"><span>From date</span><input id="filterDate" type="date"></label>
+      </div>
+      <button type="button" class="ghost-btn" id="clearFilters">Clear filters</button>
+    </section>
+
+    <section class="card" id="sec-ai">
+      <div class="card-head">
+        <span class="card-num"><svg class="card-icon"><use href="#icon-bars"/></svg>06</span>
+        <div>
+          <h2>Local model preview</h2>
+          <p>Review the browser-local image diagnosis and farm risk signals before expert validation.</p>
+        </div>
+      </div>
+      <div class="form-grid ai-panel">
+        <label class="field">
+          <span>Class name</span>
+          <select id="modelClassName">
+            <option value="tomato__early_blight">tomato__early_blight</option>
+            <option value="cotton__bollworm">cotton__bollworm</option>
+            <option value="grape__downy_mildew">grape__downy_mildew</option>
+            <option value="onion__purple_blotch">onion__purple_blotch</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Crop stage</span>
+          <select id="modelStage">
+            <option value="FLOWERING">FLOWERING</option>
+            <option value="VEGETATIVE">VEGETATIVE</option>
+            <option value="FRUITING">FRUITING</option>
+            <option value="MATURITY">MATURITY</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Extent</span>
+          <select id="modelExtent">
+            <option value="MODERATE">MODERATE</option>
+            <option value="LOCALIZED">LOCALIZED</option>
+            <option value="EXTENSIVE">EXTENSIVE</option>
+          </select>
+        </label>
+        <label class="field">
+          <span>Progression</span>
+          <select id="modelProgression">
+            <option value="STABLE">STABLE</option>
+            <option value="SPREADING">SPREADING</option>
+            <option value="RAPIDLY_SPREADING">RAPIDLY_SPREADING</option>
+            <option value="IMPROVING">IMPROVING</option>
+          </select>
+        </label>
+        <div class="field-actions">
+          <button type="button" class="primary-btn" id="runModelBtn">Run preview</button>
+        </div>
+      </div>
+      <div id="modelPreviewResult" class="model-preview-result">Upload an image or click “Run preview” to inspect the local result.</div>
+    </section>
+
+    <section class="card" id="sec-risk">
+      <div class="card-head">
+        <span class="card-num"><svg class="card-icon"><use href="#icon-bars"/></svg>07</span>
+        <div><h2>Farm-level risk alerts</h2><p>Combines local weather, crop stage, soil condition, variety, traps, and recent field history.</p></div>
+      </div>
+      <form id="riskContextForm" class="form-grid" novalidate>
+        <label class="field"><span>Weather outlook</span><select id="riskWeather"><option value="dry">Dry / low humidity</option><option value="humid">Humid / cloudy</option><option value="rain">Rain likely</option><option value="heat">Hot / heat stress</option></select></label>
+        <label class="field"><span>Crop stage</span><select id="riskStage"><option>Vegetative</option><option>Tillering</option><option>Flowering</option><option>Fruiting</option><option>Maturity</option></select></label>
+        <label class="field"><span>Variety / cultivar</span><input id="riskVariety" placeholder="e.g. CO 51, local variety"></label>
+        <label class="field"><span>Soil condition</span><select id="riskSoil"><option value="balanced">Balanced moisture</option><option value="wet">Waterlogged / wet</option><option value="dry">Dry / stressed</option><option value="unknown">Unknown</option></select></label>
+        <label class="field"><span>Recent treatment history</span><input id="riskTreatment" placeholder="e.g. none, fungicide 5 days ago"></label>
+        <div class="field-actions"><button class="primary-btn" type="submit">Generate local alerts</button><span id="riskContextNote" class="form-note" role="status"></span></div>
+      </form>
+      <div id="riskSummary" class="risk-summary"></div>
+      <div id="riskAlerts" class="alert-list" aria-live="polite"></div>
+    </section>
+
+    <section class="card" id="sec-advisory">
+      <div class="card-head">
+        <span class="card-num"><svg class="card-icon"><use href="#icon-leaf-search"/></svg>08</span>
+        <div><h2>IPDM advisory desk</h2><p>Farmer-safe actions first. Chemical intervention remains subject to officer and regulatory verification.</p></div>
+      </div>
+      <div class="advisory-toolbar"><label class="field compact"><span>Advisory language</span><select id="advisoryLanguage"><option value="en">English</option><option value="ta">தமிழ் / Tamil</option></select></label><span class="advisory-safety">Expert validation required for chemical action</span></div>
+      <div id="advisoryContent" class="advisory-content"></div>
+    </section>
+
+    <section class="card" id="sec-response">
+      <div class="card-head">
+        <span class="card-num"><svg class="card-icon"><use href="#icon-archive"/></svg>09</span>
+        <div><h2>Expert validation and follow-up</h2><p>Route uncertain cases to an extension officer or laboratory, then track reassessment until recovery.</p></div>
+      </div>
+      <div class="response-grid">
+        <div class="response-panel"><h3>Current review</h3><div id="reviewState" class="review-state"></div><div class="response-actions"><button type="button" class="primary-btn" id="approveAdvisoryBtn">Approve advisory</button><button type="button" class="ghost-btn" id="visitReferralBtn">Request field visit</button><button type="button" class="ghost-btn" id="labReferralBtn">Refer sample to lab</button></div></div>
+        <div class="response-panel"><h3>Follow-up checkpoint</h3><form id="followUpForm" class="follow-up-form"><label class="field"><span>Crop status</span><select id="followUpStatus"><option>Better</option><option>Same</option><option>Worse</option><option>New symptoms</option></select></label><label class="field"><span>Action completed</span><input id="followUpAction" placeholder="What did the farmer do?"></label><label class="field"><span>Officer note</span><textarea id="followUpNote" rows="2" placeholder="Optional field note"></textarea></label><button class="primary-btn" type="submit">Record checkpoint</button></form></div>
+      </div>
+      <div id="followUpTimeline" class="follow-up-timeline"></div>
+    </section>
+
+    <section class="card" id="sec-map">
+      <div class="card-head">
+        <span class="card-num"><svg class="card-icon"><use href="#icon-map-pin"/></svg>10</span>
+        <div>
+          <h2>GIS map</h2>
+          <p>Farms, observations, and trap points, colour-coded by severity.</p>
+        </div>
+      </div>
+      <div class="map-legend">
+        <span><i class="dot dot-farm"></i>Farm</span>
+        <span><i class="dot dot-mild"></i>Mild</span>
+        <span><i class="dot dot-moderate"></i>Moderate</span>
+        <span><i class="dot dot-severe"></i>Severe</span>
+        <span><i class="dot dot-trap"></i>Trap</span>
+      </div>
+      <div id="map"></div>
+      <div class="map-actions">
+        <button type="button" class="ghost-btn" onclick="loadMapData()">Refresh map</button>
+      </div>
+    </section>
+
+    <section class="card" id="sec-cases">
+      <div class="card-head">
+        <span class="card-num"><svg class="card-icon"><use href="#icon-archive"/></svg>11</span>
+        <div>
+          <h2>Saved cases</h2>
+          <p>Every observation and trap reading, most recent first.</p>
+        </div>
+      </div>
+      <div id="cases" class="case-list"></div>
+    </section>
+
+    <footer class="foot">Data is kept on this device only, in the browser's local storage.</footer>
+
+  </main>
+</div>
+
+<div id="caseModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="caseModalTitle">
+  <div class="modal-content">
+    <button type="button" class="close-btn" onclick="closeCaseModal()" aria-label="Close">×</button>
+    <h3 id="caseModalTitle">Case details</h3>
+    <div id="caseDetails"></div>
+  </div>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
