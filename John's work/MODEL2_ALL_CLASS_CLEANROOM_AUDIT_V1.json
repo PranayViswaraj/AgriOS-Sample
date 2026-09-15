@@ -1,0 +1,35 @@
+{
+  "audit": "R14-E FINAL ALL-15-CLASS CLEAN-ROOM BEHAVIORAL AUDIT",
+  "classes_tested": [
+    "cotton__alternaria_leaf_spot",
+    "cotton__bacterial_blight",
+    "cotton__bollworm",
+    "cotton__healthy",
+    "grape__bacterial_leaf_spot",
+    "grape__downy_mildew",
+    "grape__healthy",
+    "grape__powdery_mildew",
+    "onion__healthy",
+    "onion__purple_blotch",
+    "onion__stemphylium_leaf_blight",
+    "tomato__early_blight",
+    "tomato__healthy",
+    "tomato__late_blight",
+    "tomato__leaf_mold"
+  ],
+  "active_class_count": 11,
+  "healthy_class_count": 4,
+  "checks": {
+    "all_15_classes_execute": true,
+    "healthy_classes_prevention_only": true,
+    "healthy_classes_skip_impact_engine": true,
+    "bollworm_species_gate": true,
+    "json_serializable": true,
+    "calibrated_probability_explicitly_false_allowed": true,
+    "no_actual_calibrated_probability_output": true,
+    "no_personalized_yield_loss_percentage": true,
+    "weather_not_used_as_direct_crop_loss": true
+  },
+  "issues": [],
+  "status": "PASS"
+}

@@ -1,0 +1,116 @@
+{
+  "NHB_GRAPE_BACTERIAL_LEAF_SPOT": {
+    "title": "National Horticulture Board — Grapes Diseases",
+    "organization": "National Horticulture Board, Government of India",
+    "type": "government_guidance",
+    "url": null
+  },
+  "ICAR_NRC_GRAPE_BLS_2017": {
+    "title": "ICAR-NRC Grapes-linked study on grape bacterial leaf spot",
+    "organization": "ICAR / NRC Grapes",
+    "type": "research_study",
+    "url": null
+  },
+  "KENTUCKY_GRAPE_DOWNY_MODEL": {
+    "title": "Grape Downy Mildew Weather Prediction Model",
+    "organization": "University of Kentucky",
+    "type": "external_epidemiological_model",
+    "url": "https://weather.uky.edu/cgi-bin/kyc_grape_dm.pl"
+  },
+  "TNAU_GRAPE_DOWNY": {
+    "title": "Grape Downy Mildew Crop Protection Guidance",
+    "organization": "Tamil Nadu Agricultural University",
+    "type": "university_extension",
+    "url": null
+  },
+  "TNAU_GRAPE_POWDERY": {
+    "title": "Grape Powdery Mildew Crop Protection Guidance",
+    "organization": "Tamil Nadu Agricultural University",
+    "type": "university_extension",
+    "url": null
+  },
+  "ICAR_ONION_PURPLE_BLOTCH": {
+    "title": "Purple Blotch of Onion — Indian Field Evidence",
+    "organization": "ICAR",
+    "type": "research_study",
+    "url": "https://epubs.icar.org.in/index.php/IPPJ/article/view/12707"
+  },
+  "IARI_PURPLE_BLOTCH": {
+    "title": "Purple Blotch Epidemiology / Weather Relationship",
+    "organization": "ICAR-IARI",
+    "type": "research_study",
+    "url": "https://epubs.icar.org.in/index.php/IJAgS/article/view/124103"
+  },
+  "ICAR_ONION_STEMPHYLIUM_NASHIK_2014": {
+    "title": "Stemphylium Blight of Onion — Weather Relationship",
+    "organization": "ICAR / Indian Journal of Agricultural Sciences",
+    "type": "research_study",
+    "url": null
+  },
+  "TNAU_COTTON_ALTERNARIA": {
+    "title": "Cotton Alternaria Leaf Spot Guidance",
+    "organization": "Tamil Nadu Agricultural University",
+    "type": "university_extension",
+    "url": "https://agritech.tnau.ac.in/crop_protection/cotton_diseases/cotton_d6.html"
+  },
+  "ICAR_COTTON_ALTERNARIA_FIELD": {
+    "title": "Cotton Alternaria Field Disease–Weather Study",
+    "organization": "ICAR-associated agricultural research",
+    "type": "research_study",
+    "url": "https://epubs.icar.org.in/index.php/TJRA/article/view/132847"
+  },
+  "ICAR_COTTON_BACTERIAL_BLIGHT_MODEL": {
+    "title": "Weather-based Prediction of Cotton Bacterial Blight",
+    "organization": "ICAR / Indian Journal of Agricultural Sciences",
+    "type": "research_study",
+    "url": "https://epubs.icar.org.in/index.php/IJAgS/article/view/3083"
+  },
+  "MASKE_DUBEY_RONGHE_SPOTTED_BOLLWORM_1986": {
+    "title": "Meteorological Factors and Spotted Bollworm Infestation",
+    "organization": "MAUSAM",
+    "type": "historical_research_study",
+    "url": null
+  },
+  "ICAR_TOMATO_EARLY_BLIGHT_ML_2019": {
+    "title": "Weather-based Tomato Early Blight Forecasting Using MLR and SVR",
+    "organization": "ICAR-associated research",
+    "type": "research_study",
+    "url": null
+  },
+  "UC_FAST_TOMATO_EARLY_BLIGHT": {
+    "title": "FAST-style Tomato Early Blight Disease Forecasting",
+    "organization": "University of California IPM",
+    "type": "external_epidemiological_model",
+    "url": "https://ipm.ucanr.edu/DISEASE/DATABASE/tomatoblackmold.html"
+  },
+  "UC_TOMATO_LATE_BLIGHT_IPI": {
+    "title": "Tomato Late Blight Infection Period / Disease Pressure Model",
+    "organization": "University of California IPM",
+    "type": "external_epidemiological_model",
+    "url": "https://ipm.ucanr.edu/DISEASE/DATABASE/tomatolateblight.html"
+  },
+  "UMN_TOMATO_LEAF_MOLD": {
+    "title": "Tomato Leaf Mold",
+    "organization": "University of Minnesota Extension",
+    "type": "extension_guidance",
+    "url": null
+  },
+  "CORNELL_TOMATO_LEAF_MOLD": {
+    "title": "Tomato Leaf Mold Guidance",
+    "organization": "Cornell University",
+    "type": "extension_guidance",
+    "url": null
+  },
+  "UCONN_TOMATO_LEAF_MOLD_2026": {
+    "title": "Tomato Leaf Mold IPM Guidance",
+    "organization": "University of Connecticut",
+    "type": "extension_guidance",
+    "url": null
+  },
+  "JHS_TOMATO_LEAF_MOLD": {
+    "title": "Supporting Tomato Leaf Mold Research",
+    "organization": "Journal of Horticultural Sciences",
+    "type": "supporting_research",
+    "url": null
+  }
+}

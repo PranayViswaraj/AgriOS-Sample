@@ -1,0 +1,901 @@
+{
+  "grape__bacterial_leaf_spot": {
+    "registry_version": "MODEL2_IMPACT_EVIDENCE_REGISTRY_V1",
+    "crop": "grape",
+    "class_name": "grape__bacterial_leaf_spot",
+    "condition_name": "Grape Bacterial Leaf Spot",
+    "quantitative_evidence": {
+      "available": false,
+      "evidence_type": "NONE",
+      "yield_loss_min_percent": null,
+      "yield_loss_max_percent": null,
+      "deployment_applicable": false,
+      "applicability_notes": "No validated deployable quantitative loss model is currently available."
+    },
+    "qualitative_impact": {
+      "affected_plant_parts": [
+        "leaves",
+        "young shoots",
+        "berries"
+      ],
+      "possible_consequences": [
+        "lesion development",
+        "shoot injury",
+        "berry injury",
+        "possible fruit-quality reduction",
+        "possible productivity reduction under severe disease"
+      ],
+      "yield_impact_supported": true,
+      "quality_impact_supported": true,
+      "plant_survival_impact_supported": false
+    },
+    "crop_stage_context": {
+      "stage_sensitive": false,
+      "high_consequence_stages": [],
+      "stage_notes": null
+    },
+    "field_assessment_inputs": {
+      "affected_extent_required": true,
+      "progression_required": true,
+      "crop_stage_required": true,
+      "time_untreated_required": true,
+      "officer_validation_recommended": true
+    },
+    "management_effect": {
+      "quantitative_loss_avoided_supported": false,
+      "loss_avoided_min_percent": null,
+      "loss_avoided_max_percent": null,
+      "interpretation": "Management may reduce further disease or pest progression, but quantitative yield preserved must not be estimated without condition-specific evidence."
+    },
+    "evidence": {
+      "evidence_level": "SUPPORTED_QUALITATIVE_EVIDENCE",
+      "source_ids": [
+        "NHB_GRAPE_BACTERIAL_LEAF_SPOT",
+        "ICAR_NRC_GRAPE_BLS_2017"
+      ],
+      "limitations": [
+        "No verified transferable disease-severity-to-yield-loss equation is currently available for the AgroSmart deployment context."
+      ]
+    },
+    "claim_control": {
+      "allow_quantitative_loss": false,
+      "allow_quantitative_yield_preserved": false,
+      "allow_weather_to_directly_estimate_loss": false,
+      "allow_unverified_percentage": false,
+      "default_user_message": "Quantitative yield loss: insufficient evidence."
+    },
+    "impact_evidence_classification": "QUALITATIVE_ONLY",
+    "contextual_quantitative_evidence": [],
+    "species_gate": null
+  },
+  "grape__downy_mildew": {
+    "registry_version": "MODEL2_IMPACT_EVIDENCE_REGISTRY_V1",
+    "crop": "grape",
+    "class_name": "grape__downy_mildew",
+    "condition_name": "Grape Downy Mildew",
+    "quantitative_evidence": {
+      "available": true,
+      "evidence_type": "CONTEXTUAL_PUBLISHED_EVIDENCE",
+      "yield_loss_min_percent": null,
+      "yield_loss_max_percent": null,
+      "deployment_applicable": false,
+      "applicability_notes": "Published quantitative evidence is stored for scientific context only and is not authorized for direct farmer-specific loss prediction."
+    },
+    "qualitative_impact": {
+      "affected_plant_parts": [
+        "leaves",
+        "shoots",
+        "inflorescences",
+        "berries"
+      ],
+      "possible_consequences": [
+        "defoliation",
+        "reduced photosynthetic area",
+        "flower or cluster injury",
+        "berry infection",
+        "yield and quality reduction under severe disease"
+      ],
+      "yield_impact_supported": true,
+      "quality_impact_supported": true,
+      "plant_survival_impact_supported": false
+    },
+    "crop_stage_context": {
+      "stage_sensitive": true,
+      "high_consequence_stages": [
+        "flowering",
+        "fruit_set",
+        "early_berry_development"
+      ],
+      "stage_notes": "Cluster infection during reproductive stages may have greater production consequence than isolated foliar injury."
+    },
+    "field_assessment_inputs": {
+      "affected_extent_required": true,
+      "progression_required": true,
+      "crop_stage_required": true,
+      "time_untreated_required": true,
+      "officer_validation_recommended": true
+    },
+    "management_effect": {
+      "quantitative_loss_avoided_supported": false,
+      "loss_avoided_min_percent": null,
+      "loss_avoided_max_percent": null,
+      "interpretation": "Management may reduce further disease or pest progression, but quantitative yield preserved must not be estimated without condition-specific evidence."
+    },
+    "evidence": {
+      "evidence_level": "SUPPORTED_WITH_CONTEXTUAL_QUANTITATIVE_EVIDENCE",
+      "source_ids": [
+        "TNAU_GRAPE_DOWNY",
+        "ISTI_GRAPEVINE_MILDEWS_2023_2026"
+      ],
+      "limitations": [
+        "The 50–100% severe-loss statement applies to grapevine mildews collectively and must not be shown as a downy-mildew-specific farmer prediction."
+      ]
+    },
+    "claim_control": {
+      "allow_quantitative_loss": false,
+      "allow_quantitative_yield_preserved": false,
+      "allow_weather_to_directly_estimate_loss": false,
+      "allow_unverified_percentage": false,
+      "default_user_message": "Quantitative yield loss: insufficient evidence."
+    },
+    "impact_evidence_classification": "CONTEXTUAL_QUANTITATIVE_ONLY",
+    "contextual_quantitative_evidence": [
+      {
+        "reported_range_percent": [
+          50,
+          100
+        ],
+        "scope": "Severe grapevine mildews collectively",
+        "deployable": false,
+        "reason": "Evidence combines downy and powdery mildew."
+      }
+    ],
+    "species_gate": null
+  },
+  "grape__powdery_mildew": {
+    "registry_version": "MODEL2_IMPACT_EVIDENCE_REGISTRY_V1",
+    "crop": "grape",
+    "class_name": "grape__powdery_mildew",
+    "condition_name": "Grape Powdery Mildew",
+    "quantitative_evidence": {
+      "available": true,
+      "evidence_type": "CONTEXTUAL_PUBLISHED_EVIDENCE",
+      "yield_loss_min_percent": null,
+      "yield_loss_max_percent": null,
+      "deployment_applicable": false,
+      "applicability_notes": "Published quantitative evidence is stored for scientific context only and is not authorized for direct farmer-specific loss prediction."
+    },
+    "qualitative_impact": {
+      "affected_plant_parts": [
+        "leaves",
+        "shoots",
+        "flowers",
+        "berries"
+      ],
+      "possible_consequences": [
+        "reduced photosynthetic area",
+        "flower or berry injury",
+        "berry cracking or quality deterioration",
+        "yield and quality reduction under severe disease"
+      ],
+      "yield_impact_supported": true,
+      "quality_impact_supported": true,
+      "plant_survival_impact_supported": false
+    },
+    "crop_stage_context": {
+      "stage_sensitive": true,
+      "high_consequence_stages": [
+        "flowering",
+        "fruit_set",
+        "berry_development"
+      ],
+      "stage_notes": null
+    },
+    "field_assessment_inputs": {
+      "affected_extent_required": true,
+      "progression_required": true,
+      "crop_stage_required": true,
+      "time_untreated_required": true,
+      "officer_validation_recommended": true
+    },
+    "management_effect": {
+      "quantitative_loss_avoided_supported": false,
+      "loss_avoided_min_percent": null,
+      "loss_avoided_max_percent": null,
+      "interpretation": "Management may reduce further disease or pest progression, but quantitative yield preserved must not be estimated without condition-specific evidence."
+    },
+    "evidence": {
+      "evidence_level": "SUPPORTED_WITH_CONTEXTUAL_QUANTITATIVE_EVIDENCE",
+      "source_ids": [
+        "TNAU_GRAPE_POWDERY",
+        "ISTI_GRAPEVINE_MILDEWS_2023_2026"
+      ],
+      "limitations": [
+        "Combined mildew loss range cannot be assigned specifically to powdery mildew in an individual case."
+      ]
+    },
+    "claim_control": {
+      "allow_quantitative_loss": false,
+      "allow_quantitative_yield_preserved": false,
+      "allow_weather_to_directly_estimate_loss": false,
+      "allow_unverified_percentage": false,
+      "default_user_message": "Quantitative yield loss: insufficient evidence."
+    },
+    "impact_evidence_classification": "CONTEXTUAL_QUANTITATIVE_ONLY",
+    "contextual_quantitative_evidence": [
+      {
+        "reported_range_percent": [
+          50,
+          100
+        ],
+        "scope": "Severe grapevine mildews collectively",
+        "deployable": false,
+        "reason": "Evidence combines downy and powdery mildew."
+      }
+    ],
+    "species_gate": null
+  },
+  "onion__purple_blotch": {
+    "registry_version": "MODEL2_IMPACT_EVIDENCE_REGISTRY_V1",
+    "crop": "onion",
+    "class_name": "onion__purple_blotch",
+    "condition_name": "Onion Purple Blotch",
+    "quantitative_evidence": {
+      "available": true,
+      "evidence_type": "CONTEXTUAL_PUBLISHED_EVIDENCE",
+      "yield_loss_min_percent": null,
+      "yield_loss_max_percent": null,
+      "deployment_applicable": false,
+      "applicability_notes": "Published quantitative evidence is stored for scientific context only and is not authorized for direct farmer-specific loss prediction."
+    },
+    "qualitative_impact": {
+      "affected_plant_parts": [
+        "leaves",
+        "flower stalks"
+      ],
+      "possible_consequences": [
+        "leaf drying",
+        "reduced photosynthetic area",
+        "poor bulb development",
+        "yield reduction",
+        "seed-production losses in seed crops"
+      ],
+      "yield_impact_supported": true,
+      "quality_impact_supported": false,
+      "plant_survival_impact_supported": false
+    },
+    "crop_stage_context": {
+      "stage_sensitive": true,
+      "high_consequence_stages": [
+        "bulb_development",
+        "seed_crop_reproductive_stage"
+      ],
+      "stage_notes": null
+    },
+    "field_assessment_inputs": {
+      "affected_extent_required": true,
+      "progression_required": true,
+      "crop_stage_required": true,
+      "time_untreated_required": true,
+      "officer_validation_recommended": true
+    },
+    "management_effect": {
+      "quantitative_loss_avoided_supported": false,
+      "loss_avoided_min_percent": null,
+      "loss_avoided_max_percent": null,
+      "interpretation": "Management may reduce further disease or pest progression, but quantitative yield preserved must not be estimated without condition-specific evidence."
+    },
+    "evidence": {
+      "evidence_level": "SUPPORTED_WITH_INDIAN_QUANTITATIVE_CONTEXT",
+      "source_ids": [
+        "ONION_PURPLE_BLOTCH_TN_IPM",
+        "ONION_PURPLE_BLOTCH_SEED_LOSS_ICAR",
+        "ICAR_ONION_PURPLE_BLOTCH",
+        "IARI_PURPLE_BLOTCH"
+      ],
+      "limitations": [
+        "Bulb-production and seed-production evidence must not be mixed into one farmer loss estimate."
+      ]
+    },
+    "claim_control": {
+      "allow_quantitative_loss": false,
+      "allow_quantitative_yield_preserved": false,
+      "allow_weather_to_directly_estimate_loss": false,
+      "allow_unverified_percentage": false,
+      "default_user_message": "Quantitative yield loss: insufficient evidence."
+    },
+    "impact_evidence_classification": "CONTEXTUAL_QUANTITATIVE_ONLY",
+    "contextual_quantitative_evidence": [
+      {
+        "reported_range_percent": [
+          20,
+          25
+        ],
+        "scope": "Reported onion/shallot yield loss",
+        "deployable": false,
+        "reason": "Not linked to AgroSmart field severity inputs."
+      },
+      {
+        "reported_percent": 97.3,
+        "scope": "Severe infection seed yield reduction in onion seed crop",
+        "deployable": false,
+        "reason": "Seed crop result is not transferable to bulb yield."
+      }
+    ],
+    "species_gate": null
+  },
+  "onion__stemphylium_leaf_blight": {
+    "registry_version": "MODEL2_IMPACT_EVIDENCE_REGISTRY_V1",
+    "crop": "onion",
+    "class_name": "onion__stemphylium_leaf_blight",
+    "condition_name": "Onion Stemphylium Leaf Blight",
+    "quantitative_evidence": {
+      "available": true,
+      "evidence_type": "CONTEXTUAL_PUBLISHED_EVIDENCE",
+      "yield_loss_min_percent": null,
+      "yield_loss_max_percent": null,
+      "deployment_applicable": false,
+      "applicability_notes": "Published quantitative evidence is stored for scientific context only and is not authorized for direct farmer-specific loss prediction."
+    },
+    "qualitative_impact": {
+      "affected_plant_parts": [
+        "leaves",
+        "foliar canopy"
+      ],
+      "possible_consequences": [
+        "leaf blighting",
+        "premature foliage loss",
+        "reduced bulb filling",
+        "yield reduction",
+        "quality reduction under severe disease"
+      ],
+      "yield_impact_supported": true,
+      "quality_impact_supported": true,
+      "plant_survival_impact_supported": false
+    },
+    "crop_stage_context": {
+      "stage_sensitive": true,
+      "high_consequence_stages": [
+        "active_vegetative_growth",
+        "bulb_development"
+      ],
+      "stage_notes": null
+    },
+    "field_assessment_inputs": {
+      "affected_extent_required": true,
+      "progression_required": true,
+      "crop_stage_required": true,
+      "time_untreated_required": true,
+      "officer_validation_recommended": true
+    },
+    "management_effect": {
+      "quantitative_loss_avoided_supported": false,
+      "loss_avoided_min_percent": null,
+      "loss_avoided_max_percent": null,
+      "interpretation": "Management may reduce further disease or pest progression, but quantitative yield preserved must not be estimated without condition-specific evidence."
+    },
+    "evidence": {
+      "evidence_level": "STRONG_CONTEXTUAL_INDIAN_FIELD_EVIDENCE",
+      "source_ids": [
+        "ICAR_ONION_STEMPHYLIUM_NASHIK_2014",
+        "ONION_STEMPHYLIUM_NASHIK_2014_IMPACT",
+        "ONION_STEMPHYLIUM_SEVERE_REVIEW"
+      ],
+      "limitations": [
+        "The Nashik 31.64% value represents treatment-associated marketable-yield improvement, not a direct disease-loss percentage.",
+        "Raw Stemphylium weather regression from Model 2 must never be converted directly into yield loss."
+      ]
+    },
+    "claim_control": {
+      "allow_quantitative_loss": false,
+      "allow_quantitative_yield_preserved": false,
+      "allow_weather_to_directly_estimate_loss": false,
+      "allow_unverified_percentage": false,
+      "default_user_message": "Quantitative yield loss: insufficient evidence."
+    },
+    "impact_evidence_classification": "CONTEXTUAL_QUANTITATIVE_ONLY",
+    "contextual_quantitative_evidence": [
+      {
+        "reported_percent": 31.64,
+        "metric": "Increase in marketable yield with best combined treatment versus untreated check",
+        "deployable": false,
+        "reason": "Treatment benefit is not equivalent to direct disease loss."
+      },
+      {
+        "reported_upper_percent": 90,
+        "scope": "Severe susceptible-cultivar literature",
+        "deployable": false,
+        "reason": "Severe-context maximum, not a predictive relationship."
+      }
+    ],
+    "species_gate": null
+  },
+  "cotton__alternaria_leaf_spot": {
+    "registry_version": "MODEL2_IMPACT_EVIDENCE_REGISTRY_V1",
+    "crop": "cotton",
+    "class_name": "cotton__alternaria_leaf_spot",
+    "condition_name": "Cotton Alternaria Leaf Spot",
+    "quantitative_evidence": {
+      "available": true,
+      "evidence_type": "CONTEXTUAL_PUBLISHED_EVIDENCE",
+      "yield_loss_min_percent": null,
+      "yield_loss_max_percent": null,
+      "deployment_applicable": false,
+      "applicability_notes": "Published quantitative evidence is stored for scientific context only and is not authorized for direct farmer-specific loss prediction."
+    },
+    "qualitative_impact": {
+      "affected_plant_parts": [
+        "leaves"
+      ],
+      "possible_consequences": [
+        "leaf lesions",
+        "premature defoliation",
+        "reduced photosynthetic area",
+        "seed-cotton yield reduction"
+      ],
+      "yield_impact_supported": true,
+      "quality_impact_supported": false,
+      "plant_survival_impact_supported": false
+    },
+    "crop_stage_context": {
+      "stage_sensitive": false,
+      "high_consequence_stages": [],
+      "stage_notes": null
+    },
+    "field_assessment_inputs": {
+      "affected_extent_required": true,
+      "progression_required": true,
+      "crop_stage_required": true,
+      "time_untreated_required": true,
+      "officer_validation_recommended": true
+    },
+    "management_effect": {
+      "quantitative_loss_avoided_supported": false,
+      "loss_avoided_min_percent": null,
+      "loss_avoided_max_percent": null,
+      "interpretation": "Management may reduce further disease or pest progression, but quantitative yield preserved must not be estimated without condition-specific evidence."
+    },
+    "evidence": {
+      "evidence_level": "STRONG_INDIAN_FIELD_QUANTITATIVE_CONTEXT",
+      "source_ids": [
+        "TNAU_COTTON_ALTERNARIA",
+        "ICAR_COTTON_ALTERNARIA_FIELD",
+        "COTTON_ALTERNARIA_YIELD_LOSS_ANGRAU"
+      ],
+      "limitations": [
+        "Published genotype-specific loss values cannot be applied as a universal cotton Alternaria estimate."
+      ]
+    },
+    "claim_control": {
+      "allow_quantitative_loss": false,
+      "allow_quantitative_yield_preserved": false,
+      "allow_weather_to_directly_estimate_loss": false,
+      "allow_unverified_percentage": false,
+      "default_user_message": "Quantitative yield loss: insufficient evidence."
+    },
+    "impact_evidence_classification": "CONTEXTUAL_QUANTITATIVE_ONLY",
+    "contextual_quantitative_evidence": [
+      {
+        "reported_range_percent": [
+          16.14,
+          26.28
+        ],
+        "scope": "Seed-cotton loss across evaluated genotypes",
+        "deployable": false,
+        "reason": "Observed losses varied by genotype and trial context."
+      }
+    ],
+    "species_gate": null
+  },
+  "cotton__bacterial_blight": {
+    "registry_version": "MODEL2_IMPACT_EVIDENCE_REGISTRY_V1",
+    "crop": "cotton",
+    "class_name": "cotton__bacterial_blight",
+    "condition_name": "Cotton Bacterial Blight",
+    "quantitative_evidence": {
+      "available": true,
+      "evidence_type": "CONTEXTUAL_PUBLISHED_EVIDENCE",
+      "yield_loss_min_percent": null,
+      "yield_loss_max_percent": null,
+      "deployment_applicable": false,
+      "applicability_notes": "Published quantitative evidence is stored for scientific context only and is not authorized for direct farmer-specific loss prediction."
+    },
+    "qualitative_impact": {
+      "affected_plant_parts": [
+        "cotyledons",
+        "leaves",
+        "stems",
+        "bolls"
+      ],
+      "possible_consequences": [
+        "leaf injury",
+        "stem lesions",
+        "boll infection",
+        "yield reduction"
+      ],
+      "yield_impact_supported": true,
+      "quality_impact_supported": true,
+      "plant_survival_impact_supported": false
+    },
+    "crop_stage_context": {
+      "stage_sensitive": false,
+      "high_consequence_stages": [],
+      "stage_notes": null
+    },
+    "field_assessment_inputs": {
+      "affected_extent_required": true,
+      "progression_required": true,
+      "crop_stage_required": true,
+      "time_untreated_required": true,
+      "officer_validation_recommended": true
+    },
+    "management_effect": {
+      "quantitative_loss_avoided_supported": false,
+      "loss_avoided_min_percent": null,
+      "loss_avoided_max_percent": null,
+      "interpretation": "Management may reduce further disease or pest progression, but quantitative yield preserved must not be estimated without condition-specific evidence."
+    },
+    "evidence": {
+      "evidence_level": "STRONG_HISTORICAL_INDIAN_CONTEXT",
+      "source_ids": [
+        "ICAR_COTTON_BACTERIAL_BLIGHT_MODEL",
+        "COTTON_BACTERIAL_BLIGHT_REVIEW_2024"
+      ],
+      "limitations": [
+        "Historical 30–35% losses must not be interpreted as present-day individual-field loss."
+      ]
+    },
+    "claim_control": {
+      "allow_quantitative_loss": false,
+      "allow_quantitative_yield_preserved": false,
+      "allow_weather_to_directly_estimate_loss": false,
+      "allow_unverified_percentage": false,
+      "default_user_message": "Quantitative yield loss: insufficient evidence."
+    },
+    "impact_evidence_classification": "CONTEXTUAL_QUANTITATIVE_ONLY",
+    "contextual_quantitative_evidence": [
+      {
+        "reported_range_percent": [
+          30,
+          35
+        ],
+        "scope": "Historical regular yield losses in India",
+        "deployable": false,
+        "reason": "Historical disease population context and resistance differ from current farm conditions."
+      }
+    ],
+    "species_gate": null
+  },
+  "cotton__bollworm": {
+    "registry_version": "MODEL2_IMPACT_EVIDENCE_REGISTRY_V1",
+    "crop": "cotton",
+    "class_name": "cotton__bollworm",
+    "condition_name": "Cotton Bollworm",
+    "quantitative_evidence": {
+      "available": true,
+      "evidence_type": "CONTEXTUAL_PUBLISHED_EVIDENCE",
+      "yield_loss_min_percent": null,
+      "yield_loss_max_percent": null,
+      "deployment_applicable": false,
+      "applicability_notes": "Published quantitative evidence is stored for scientific context only and is not authorized for direct farmer-specific loss prediction."
+    },
+    "qualitative_impact": {
+      "affected_plant_parts": [
+        "squares",
+        "flowers",
+        "bolls",
+        "seed",
+        "lint"
+      ],
+      "possible_consequences": [
+        "boll damage",
+        "boll shedding",
+        "seed injury",
+        "lint-quality deterioration",
+        "yield reduction"
+      ],
+      "yield_impact_supported": true,
+      "quality_impact_supported": true,
+      "plant_survival_impact_supported": false
+    },
+    "crop_stage_context": {
+      "stage_sensitive": true,
+      "high_consequence_stages": [
+        "flowering",
+        "boll_formation",
+        "boll_development"
+      ],
+      "stage_notes": null
+    },
+    "field_assessment_inputs": {
+      "affected_extent_required": true,
+      "progression_required": true,
+      "crop_stage_required": true,
+      "time_untreated_required": true,
+      "officer_validation_recommended": true
+    },
+    "management_effect": {
+      "quantitative_loss_avoided_supported": false,
+      "loss_avoided_min_percent": null,
+      "loss_avoided_max_percent": null,
+      "interpretation": "Management may reduce further disease or pest progression, but quantitative yield preserved must not be estimated without condition-specific evidence."
+    },
+    "evidence": {
+      "evidence_level": "STRONG_SPECIES_SPECIFIC_EVIDENCE_WITH_HARD_GATE",
+      "source_ids": [
+        "MASKE_DUBEY_RONGHE_SPOTTED_BOLLWORM_1986",
+        "COTTON_PINK_BOLLWORM_FIELD_LOSS_2025"
+      ],
+      "limitations": [
+        "Pink-bollworm impact evidence must remain inaccessible until species is confirmed independently."
+      ]
+    },
+    "claim_control": {
+      "allow_quantitative_loss": false,
+      "allow_quantitative_yield_preserved": false,
+      "allow_weather_to_directly_estimate_loss": false,
+      "allow_unverified_percentage": false,
+      "default_user_message": "Quantitative yield loss: insufficient evidence."
+    },
+    "impact_evidence_classification": "SPECIES_GATED_CONTEXTUAL_QUANTITATIVE",
+    "contextual_quantitative_evidence": [
+      {
+        "reported_percent": 25,
+        "scope": "Approximate potential loss from uncontrolled pink bollworm",
+        "deployable": false,
+        "species": "Pectinophora gossypiella"
+      },
+      {
+        "reported_percent": 3.75,
+        "scope": "Estimated current annual pink-bollworm loss under control conditions",
+        "deployable": false,
+        "species": "Pectinophora gossypiella"
+      }
+    ],
+    "species_gate": {
+      "required": true,
+      "model1_label": "cotton__bollworm",
+      "species_confirmed": false,
+      "allowed_species_specific_quantification": false,
+      "reason": "Model 1 does not distinguish pink, spotted, or other bollworm species."
+    }
+  },
+  "tomato__early_blight": {
+    "registry_version": "MODEL2_IMPACT_EVIDENCE_REGISTRY_V1",
+    "crop": "tomato",
+    "class_name": "tomato__early_blight",
+    "condition_name": "Tomato Early Blight",
+    "quantitative_evidence": {
+      "available": true,
+      "evidence_type": "CONTEXTUAL_PUBLISHED_EVIDENCE",
+      "yield_loss_min_percent": null,
+      "yield_loss_max_percent": null,
+      "deployment_applicable": false,
+      "applicability_notes": "Published quantitative evidence is stored for scientific context only and is not authorized for direct farmer-specific loss prediction."
+    },
+    "qualitative_impact": {
+      "affected_plant_parts": [
+        "leaves",
+        "stems",
+        "fruit"
+      ],
+      "possible_consequences": [
+        "progressive defoliation",
+        "reduced photosynthetic area",
+        "fruit injury",
+        "yield reduction"
+      ],
+      "yield_impact_supported": true,
+      "quality_impact_supported": true,
+      "plant_survival_impact_supported": false
+    },
+    "crop_stage_context": {
+      "stage_sensitive": true,
+      "high_consequence_stages": [
+        "fruit_set",
+        "fruit_development"
+      ],
+      "stage_notes": null
+    },
+    "field_assessment_inputs": {
+      "affected_extent_required": true,
+      "progression_required": true,
+      "crop_stage_required": true,
+      "time_untreated_required": true,
+      "officer_validation_recommended": true
+    },
+    "management_effect": {
+      "quantitative_loss_avoided_supported": false,
+      "loss_avoided_min_percent": null,
+      "loss_avoided_max_percent": null,
+      "interpretation": "Management may reduce further disease or pest progression, but quantitative yield preserved must not be estimated without condition-specific evidence."
+    },
+    "evidence": {
+      "evidence_level": "STRONG_INDIAN_EXPERIMENTAL_EVIDENCE_NOT_YET_DEPLOYABLE",
+      "source_ids": [
+        "ICAR_TOMATO_EARLY_BLIGHT_ML_2019",
+        "TOMATO_EARLY_BLIGHT_YIELD_LOSS_2012"
+      ],
+      "limitations": [
+        "Do not execute the published severity-loss equation in AgroSmart V1 until its units and external transferability are independently validated."
+      ]
+    },
+    "claim_control": {
+      "allow_quantitative_loss": false,
+      "allow_quantitative_yield_preserved": false,
+      "allow_weather_to_directly_estimate_loss": false,
+      "allow_unverified_percentage": false,
+      "default_user_message": "Quantitative yield loss: insufficient evidence."
+    },
+    "impact_evidence_classification": "CONTEXTUAL_QUANTITATIVE_WITH_PUBLISHED_RELATIONSHIP",
+    "contextual_quantitative_evidence": [
+      {
+        "type": "published_severity_loss_relationship",
+        "reported_relationship": "Study reported approximately 0.75–0.77 t/ha yield loss per 1% increase in disease severity under its experimental conditions.",
+        "deployable": false,
+        "reason": "Requires validation of units, genotype, baseline yield and transferability before production use."
+      }
+    ],
+    "species_gate": null
+  },
+  "tomato__late_blight": {
+    "registry_version": "MODEL2_IMPACT_EVIDENCE_REGISTRY_V1",
+    "crop": "tomato",
+    "class_name": "tomato__late_blight",
+    "condition_name": "Tomato Late Blight",
+    "quantitative_evidence": {
+      "available": true,
+      "evidence_type": "CONTEXTUAL_PUBLISHED_EVIDENCE",
+      "yield_loss_min_percent": null,
+      "yield_loss_max_percent": null,
+      "deployment_applicable": false,
+      "applicability_notes": "Published quantitative evidence is stored for scientific context only and is not authorized for direct farmer-specific loss prediction."
+    },
+    "qualitative_impact": {
+      "affected_plant_parts": [
+        "leaves",
+        "stems",
+        "fruit"
+      ],
+      "possible_consequences": [
+        "rapid canopy destruction",
+        "fruit infection",
+        "major marketable-yield loss",
+        "possible crop failure during severe epidemics"
+      ],
+      "yield_impact_supported": true,
+      "quality_impact_supported": true,
+      "plant_survival_impact_supported": true
+    },
+    "crop_stage_context": {
+      "stage_sensitive": true,
+      "high_consequence_stages": [
+        "flowering",
+        "fruit_set",
+        "fruit_development",
+        "harvest_period"
+      ],
+      "stage_notes": null
+    },
+    "field_assessment_inputs": {
+      "affected_extent_required": true,
+      "progression_required": true,
+      "crop_stage_required": true,
+      "time_untreated_required": true,
+      "officer_validation_recommended": true
+    },
+    "management_effect": {
+      "quantitative_loss_avoided_supported": false,
+      "loss_avoided_min_percent": null,
+      "loss_avoided_max_percent": null,
+      "interpretation": "Management may reduce further disease or pest progression, but quantitative yield preserved must not be estimated without condition-specific evidence."
+    },
+    "evidence": {
+      "evidence_level": "VERY_STRONG_INDIAN_FIELD_QUANTITATIVE_CONTEXT",
+      "source_ids": [
+        "UC_TOMATO_LATE_BLIGHT_IPI",
+        "TOMATO_LATE_BLIGHT_IIHR_2022"
+      ],
+      "limitations": [
+        "Large genotype dependence means a universal late-blight loss percentage would be scientifically misleading."
+      ]
+    },
+    "claim_control": {
+      "allow_quantitative_loss": false,
+      "allow_quantitative_yield_preserved": false,
+      "allow_weather_to_directly_estimate_loss": false,
+      "allow_unverified_percentage": false,
+      "default_user_message": "Quantitative yield loss: insufficient evidence."
+    },
+    "impact_evidence_classification": "CONTEXTUAL_QUANTITATIVE_ONLY",
+    "contextual_quantitative_evidence": [
+      {
+        "hybrid": "NS501",
+        "reported_loss_percent": 79.47,
+        "deployable": false
+      },
+      {
+        "hybrid": "Arka Rakshak",
+        "reported_loss_percent": 75.53,
+        "deployable": false
+      },
+      {
+        "hybrid": "Arka Abhed",
+        "reported_loss_percent": 12.84,
+        "deployable": false
+      }
+    ],
+    "species_gate": null
+  },
+  "tomato__leaf_mold": {
+    "registry_version": "MODEL2_IMPACT_EVIDENCE_REGISTRY_V1",
+    "crop": "tomato",
+    "class_name": "tomato__leaf_mold",
+    "condition_name": "Tomato Leaf Mold",
+    "quantitative_evidence": {
+      "available": false,
+      "evidence_type": "NONE",
+      "yield_loss_min_percent": null,
+      "yield_loss_max_percent": null,
+      "deployment_applicable": false,
+      "applicability_notes": "No validated deployable quantitative loss model is currently available."
+    },
+    "qualitative_impact": {
+      "affected_plant_parts": [
+        "leaves",
+        "foliar canopy"
+      ],
+      "possible_consequences": [
+        "yellowing",
+        "necrosis",
+        "defoliation",
+        "reduced photosynthetic capacity",
+        "possible yield reduction as disease progresses"
+      ],
+      "yield_impact_supported": true,
+      "quality_impact_supported": false,
+      "plant_survival_impact_supported": false
+    },
+    "crop_stage_context": {
+      "stage_sensitive": false,
+      "high_consequence_stages": [],
+      "stage_notes": null
+    },
+    "field_assessment_inputs": {
+      "affected_extent_required": true,
+      "progression_required": true,
+      "crop_stage_required": true,
+      "time_untreated_required": true,
+      "officer_validation_recommended": true
+    },
+    "management_effect": {
+      "quantitative_loss_avoided_supported": false,
+      "loss_avoided_min_percent": null,
+      "loss_avoided_max_percent": null,
+      "interpretation": "Management may reduce further disease or pest progression, but quantitative yield preserved must not be estimated without condition-specific evidence."
+    },
+    "evidence": {
+      "evidence_level": "SUPPORTED_QUALITATIVE_EVIDENCE",
+      "source_ids": [
+        "UMN_TOMATO_LEAF_MOLD",
+        "CORNELL_TOMATO_LEAF_MOLD",
+        "UCONN_TOMATO_LEAF_MOLD_2026",
+        "TOMATO_LEAF_MOLD_UCONN_2026",
+        "TOMATO_LEAF_MOLD_CORNELL"
+      ],
+      "limitations": [
+        "Available reviewed evidence supports yield impact but does not provide a validated transferable percentage-loss model."
+      ]
+    },
+    "claim_control": {
+      "allow_quantitative_loss": false,
+      "allow_quantitative_yield_preserved": false,
+      "allow_weather_to_directly_estimate_loss": false,
+      "allow_unverified_percentage": false,
+      "default_user_message": "Quantitative yield loss: insufficient evidence."
+    },
+    "impact_evidence_classification": "QUALITATIVE_ONLY",
+    "contextual_quantitative_evidence": [],
+    "species_gate": null
+  }
+}

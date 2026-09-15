@@ -1,0 +1,23 @@
+{
+  "audit": "MODEL2 DEPLOYMENT PACKAGE V1 FINAL FREEZE AUDIT",
+  "package": "AgroSmart Model 2",
+  "package_path": "/content/gdrive/MyDrive/AgroSmart_Model2/deployment_package_v1",
+  "manifest": "config/model2_manifest_v1.json",
+  "manifest_self_checksum_excluded": true,
+  "final_audit_checksum_excluded": true,
+  "immutable_file_count": 17,
+  "missing_files": [],
+  "checksum_issues": [],
+  "cleanroom_audit_status": "PASS",
+  "cleanroom_classes_tested": 15,
+  "scientific_safety": {
+    "calibrated_probability_output": false,
+    "personalized_yield_loss_percentage": false,
+    "weather_directly_estimates_crop_loss": false,
+    "healthy_classes_prevention_only": true,
+    "bollworm_species_confirmation_gate": true,
+    "leaf_wetness_proxy_not_claimed_as_measurement": true
+  },
+  "status": "PASS",
+  "finalized_at": "2026-09-13T21:49:36.847810"
+}

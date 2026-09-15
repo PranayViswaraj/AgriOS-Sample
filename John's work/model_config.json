@@ -1,0 +1,58 @@
+{
+    "model_name": "efficientnet_b0",
+    "num_classes": 15,
+    "img_size": 224,
+    "class_to_idx": {
+        "cotton__alternaria_leaf_spot": 0,
+        "cotton__bacterial_blight": 1,
+        "cotton__bollworm": 2,
+        "cotton__healthy": 3,
+        "grape__bacterial_leaf_spot": 4,
+        "grape__downy_mildew": 5,
+        "grape__healthy": 6,
+        "grape__powdery_mildew": 7,
+        "onion__healthy": 8,
+        "onion__purple_blotch": 9,
+        "onion__stemphylium_leaf_blight": 10,
+        "tomato__early_blight": 11,
+        "tomato__healthy": 12,
+        "tomato__late_blight": 13,
+        "tomato__leaf_mold": 14
+    },
+    "idx_to_class": {
+        "0": "cotton__alternaria_leaf_spot",
+        "1": "cotton__bacterial_blight",
+        "2": "cotton__bollworm",
+        "3": "cotton__healthy",
+        "4": "grape__bacterial_leaf_spot",
+        "5": "grape__downy_mildew",
+        "6": "grape__healthy",
+        "7": "grape__powdery_mildew",
+        "8": "onion__healthy",
+        "9": "onion__purple_blotch",
+        "10": "onion__stemphylium_leaf_blight",
+        "11": "tomato__early_blight",
+        "12": "tomato__healthy",
+        "13": "tomato__late_blight",
+        "14": "tomato__leaf_mold"
+    },
+    "normalization": {
+        "mean": [
+            0.485,
+            0.456,
+            0.406
+        ],
+        "std": [
+            0.229,
+            0.224,
+            0.225
+        ]
+    },
+    "test_metrics": {
+        "accuracy": 0.985118,
+        "macro_precision": 0.968361,
+        "macro_recall": 0.967943,
+        "macro_f1": 0.967415,
+        "weighted_f1": 0.984967
+    }
+}

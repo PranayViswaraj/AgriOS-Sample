@@ -1,0 +1,14 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: agrios-postgis
+    environment:
+      POSTGRES_DB: agrios
+      POSTGRES_USER: agrios
+      POSTGRES_PASSWORD: agrios
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+volumes:
+  postgres_data:

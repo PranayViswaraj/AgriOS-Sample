@@ -1,0 +1,6 @@
+{
+  "ui_status": "ASSESSMENT_AVAILABLE",
+  "headline": "Environmental assessment is available. Continue monitoring the crop.",
+  "short_label": "Assessment available",
+  "attention_level": "MONITOR"
+}

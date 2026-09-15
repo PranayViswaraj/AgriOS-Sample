@@ -1,0 +1,2201 @@
+{
+  "registry_name": "AgroSmart Model 2 Epidemiological Forecasting Registry",
+  "version": "1.0",
+  "purpose": "Evidence-based environmental disease and pest risk forecasting using literature-derived rules, published epidemiological models and weather data.",
+  "forecasting_scope": {
+    "direct_forecast": "7-day disease/pest environmental risk",
+    "extended_projection": "30-day risk outlook, not deterministic weather forecast",
+    "impact_output": "Literature-supported untreated loss and managed-loss / yield-preservation scenarios only where credible evidence exists."
+  },
+  "classes": {
+    "cotton__alternaria_leaf_spot": {
+      "class_name": "cotton__alternaria_leaf_spot",
+      "crop": "cotton",
+      "condition": "alternaria_leaf_spot",
+      "engine_version": "1.0",
+      "forecast_mode": "KNOWLEDGE_RULES",
+      "supports_7day_forecast": true,
+      "supports_30day_outlook": true,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": true,
+          "optimal_min_c": 25,
+          "optimal_max_c": 28,
+          "favorable_min_c": 25,
+          "favorable_max_c": 28,
+          "notes": "TNAU crop-protection guidance reports moderate temperatures around 25–28°C as favorable for Alternaria leaf spot.",
+          "source_ids": [
+            "TNAU_COTTON_ALTERNARIA"
+          ]
+        },
+        "relative_humidity": {
+          "enabled": true,
+          "threshold_percent": null,
+          "optimal_min_percent": null,
+          "notes": "High humidity favors Alternaria leaf spot development.",
+          "source_ids": [
+            "TNAU_COTTON_ALTERNARIA"
+          ]
+        },
+        "rainfall": {
+          "enabled": true,
+          "threshold_mm": null,
+          "accumulation_window_days": null,
+          "notes": "Intermittent rains and humid conditions favor disease development. No universal rainfall cutoff is frozen.",
+          "source_ids": [
+            "TNAU_COTTON_ALTERNARIA",
+            "ICAR_COTTON_ALTERNARIA_FIELD"
+          ]
+        },
+        "leaf_wetness": {
+          "enabled": false,
+          "minimum_hours": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "wind": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        },
+        "sunshine": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        }
+      },
+      "published_model": {
+        "available": false,
+        "model_type": null,
+        "equation": null,
+        "variables": [],
+        "output_interpretation": null,
+        "location_relevance": null,
+        "requires_local_calibration": false,
+        "source_ids": []
+      },
+      "risk_logic": {
+        "method": "EVIDENCE_WEIGHTED_RULES",
+        "rules": [
+          {
+            "rule_id": "CALT_R1",
+            "description": "Temperature around 25–28°C increases disease suitability.",
+            "factor": "temperature"
+          },
+          {
+            "rule_id": "CALT_R2",
+            "description": "High relative humidity increases disease suitability.",
+            "factor": "relative_humidity"
+          },
+          {
+            "rule_id": "CALT_R3",
+            "description": "Intermittent rainfall or prolonged wet conditions strengthen disease pressure.",
+            "factor": "rainfall"
+          },
+          {
+            "rule_id": "CALT_R4",
+            "description": "Current confirmed disease detection increases operational case risk.",
+            "factor": "case_status"
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "TO_BE_CALIBRATED_FROM_RULE_ENGINE"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": true,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "Field evidence supports weather–disease relationships, but a generalized deployment-grade yield-loss percentage has not yet been verified.",
+        "source_ids": [
+          "ICAR_COTTON_ALTERNARIA_FIELD"
+        ]
+      },
+      "limitations": [
+        "Risk represents environmental favorability rather than a guaranteed disease outbreak.",
+        "Rainfall effects depend on local crop canopy and duration of wetness.",
+        "Exact loss percentages are not currently supported."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": true,
+        "requires_current_cibrc_verification": true
+      },
+      "evidence_level": "STRONG_INDIAN_AGRONOMIC_EVIDENCE",
+      "source_ids": [
+        "TNAU_COTTON_ALTERNARIA",
+        "ICAR_COTTON_ALTERNARIA_FIELD"
+      ]
+    },
+    "cotton__bacterial_blight": {
+      "class_name": "cotton__bacterial_blight",
+      "crop": "cotton",
+      "condition": "bacterial_blight",
+      "engine_version": "1.0",
+      "forecast_mode": "PUBLISHED_MODEL_PLUS_RULES",
+      "supports_7day_forecast": true,
+      "supports_30day_outlook": true,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": true,
+          "optimal_min_c": null,
+          "optimal_max_c": null,
+          "favorable_min_c": null,
+          "favorable_max_c": null,
+          "notes": "Published Indian bacterial-blight prediction work used weather variables together with historical disease incidence. No single universal temperature interval is frozen here.",
+          "source_ids": [
+            "ICAR_COTTON_BACTERIAL_BLIGHT_MODEL"
+          ]
+        },
+        "relative_humidity": {
+          "enabled": true,
+          "threshold_percent": null,
+          "optimal_min_percent": null,
+          "notes": "Humidity is retained as a disease-pressure variable based on published Indian prediction studies.",
+          "source_ids": [
+            "ICAR_COTTON_BACTERIAL_BLIGHT_MODEL"
+          ]
+        },
+        "rainfall": {
+          "enabled": true,
+          "threshold_mm": null,
+          "accumulation_window_days": null,
+          "notes": "Rainfall is treated as a contributing disease-pressure factor. A fixed universal rainfall threshold is not assigned.",
+          "source_ids": [
+            "ICAR_COTTON_BACTERIAL_BLIGHT_MODEL"
+          ]
+        },
+        "leaf_wetness": {
+          "enabled": false,
+          "minimum_hours": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "wind": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        },
+        "sunshine": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        }
+      },
+      "published_model": {
+        "available": true,
+        "model_type": "Published Indian weather-and-disease-incidence prediction model",
+        "equation": null,
+        "variables": [
+          "historical disease incidence",
+          "temperature",
+          "relative humidity",
+          "rainfall"
+        ],
+        "output_interpretation": "Disease-incidence prediction relationship reported across Indian locations.",
+        "location_relevance": "Indian multi-location evidence; exact deployment equation/raw data are not currently available in machine-readable form.",
+        "requires_local_calibration": true,
+        "source_ids": [
+          "ICAR_COTTON_BACTERIAL_BLIGHT_MODEL"
+        ]
+      },
+      "risk_logic": {
+        "method": "PUBLISHED_MODEL_WITH_EVIDENCE_RULES",
+        "rules": [
+          {
+            "rule_id": "CBB_R1",
+            "description": "Weather favorability should be interpreted together with recent or historical disease presence.",
+            "factor": "weather_plus_case_history"
+          },
+          {
+            "rule_id": "CBB_R2",
+            "description": "Rainfall and humidity increase disease pressure when other conditions are favorable.",
+            "factor": "rainfall_relative_humidity"
+          },
+          {
+            "rule_id": "CBB_R3",
+            "description": "Current confirmed bacterial-blight detection increases case-specific risk.",
+            "factor": "case_status"
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "TO_BE_CALIBRATED_FROM_PUBLISHED_EVIDENCE"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": true,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "Current evidence supports disease forecasting relationships but does not yet provide a safely generalized yield-loss range for farmer-facing use.",
+        "source_ids": [
+          "ICAR_COTTON_BACTERIAL_BLIGHT_MODEL"
+        ]
+      },
+      "limitations": [
+        "The original raw model-development dataset is not currently available.",
+        "The published model should not be treated as a calibrated local probability for Yavatmal without validation.",
+        "Historical disease incidence is an important predictor and may be unavailable for first-time users."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": true,
+        "requires_current_cibrc_verification": true
+      },
+      "evidence_level": "STRONG_INDIAN_PUBLISHED_MODEL",
+      "source_ids": [
+        "ICAR_COTTON_BACTERIAL_BLIGHT_MODEL"
+      ]
+    },
+    "cotton__bollworm": {
+      "class_name": "cotton__bollworm",
+      "crop": "cotton",
+      "condition": "bollworm",
+      "engine_version": "1.0",
+      "forecast_mode": "PUBLISHED_METEOROLOGICAL_RELATIONSHIP",
+      "supports_7day_forecast": true,
+      "supports_30day_outlook": true,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": true,
+          "optimal_min_c": null,
+          "optimal_max_c": null,
+          "favorable_min_c": 19,
+          "favorable_max_c": 32,
+          "notes": "The uploaded historical Indian study of spotted bollworm reported high infestation around minimum temperatures of approximately 19–20°C and maximum temperatures around 30–32°C.",
+          "source_ids": [
+            "MASKE_DUBEY_RONGHE_SPOTTED_BOLLWORM_1986"
+          ]
+        },
+        "relative_humidity": {
+          "enabled": true,
+          "threshold_percent": null,
+          "optimal_min_percent": 95,
+          "notes": "The spotted-bollworm study reported high morning relative humidity around 95–100% during periods associated with maximum infestation.",
+          "source_ids": [
+            "MASKE_DUBEY_RONGHE_SPOTTED_BOLLWORM_1986"
+          ]
+        },
+        "rainfall": {
+          "enabled": true,
+          "threshold_mm": null,
+          "accumulation_window_days": 7,
+          "notes": "The historical study reported weekly rainfall around 170–210 mm during periods of maximum spotted-bollworm infestation. This is study-specific evidence and is not treated as a universal threshold.",
+          "source_ids": [
+            "MASKE_DUBEY_RONGHE_SPOTTED_BOLLWORM_1986"
+          ]
+        },
+        "leaf_wetness": {
+          "enabled": false,
+          "minimum_hours": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "wind": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        },
+        "sunshine": {
+          "enabled": true,
+          "notes": "The study reported approximately 5–7 hours of bright sunshine during periods associated with higher spotted-bollworm infestation.",
+          "source_ids": [
+            "MASKE_DUBEY_RONGHE_SPOTTED_BOLLWORM_1986"
+          ]
+        }
+      },
+      "published_model": {
+        "available": true,
+        "model_type": "Historical meteorological multiple-regression relationship",
+        "equation": "Y = 85.2868 + 0.189*X1 - 2.848*X2 + 0.420*X3 + 2.380*X4 + 0.056*X5",
+        "variables": [
+          "X1 = weekly mean minimum temperature for 43rd standard week",
+          "X2 = weekly maximum temperature for 50th standard week",
+          "X3 = morning relative humidity for 34th standard week",
+          "X4 = bright sunshine hours for 30th standard week",
+          "X5 = rainfall for 35th standard week"
+        ],
+        "output_interpretation": "Published relationship with percentage infestation of spotted bollworm.",
+        "location_relevance": "Historical field study from Surat, Gujarat. Useful as supporting meteorological evidence, but not a direct species-general model for Yavatmal cotton.",
+        "requires_local_calibration": true,
+        "source_ids": [
+          "MASKE_DUBEY_RONGHE_SPOTTED_BOLLWORM_1986"
+        ]
+      },
+      "risk_logic": {
+        "method": "SPECIES_CAVEATED_METEOROLOGICAL_RULES",
+        "rules": [
+          {
+            "rule_id": "CBW_R1",
+            "description": "Temperature conditions resembling the published spotted-bollworm high-infestation range increase meteorological suitability.",
+            "factor": "temperature"
+          },
+          {
+            "rule_id": "CBW_R2",
+            "description": "Very high morning relative humidity increases suitability according to the spotted-bollworm study.",
+            "factor": "relative_humidity"
+          },
+          {
+            "rule_id": "CBW_R3",
+            "description": "Rainfall and sunshine are treated as supporting factors using the historical meteorological evidence.",
+            "factor": "rainfall_sunshine"
+          },
+          {
+            "rule_id": "CBW_R4",
+            "description": "Species-specific forecasting must not be presented until the bollworm species is confirmed by an Extension Officer or expert.",
+            "factor": "species_confirmation"
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "SPECIES_CONFIRMATION_REQUIRED_FOR_SPECIFIC_INTERPRETATION"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": true,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "The current historical source reports percentage infestation, not a directly transferable crop-yield-loss percentage.",
+        "source_ids": [
+          "MASKE_DUBEY_RONGHE_SPOTTED_BOLLWORM_1986"
+        ]
+      },
+      "limitations": [
+        "Model 1 detects generic cotton bollworm and does not identify the bollworm species.",
+        "The available meteorological paper specifically concerns spotted bollworm (Earias spp.).",
+        "Species-specific risk and management must not be shown as definitive until expert verification.",
+        "The regression uses standard-week-specific variables and should not be blindly applied as a daily universal equation."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": true,
+        "requires_current_cibrc_verification": true
+      },
+      "evidence_level": "SUPPORTED_WITH_SPECIES_LIMITATION",
+      "source_ids": [
+        "MASKE_DUBEY_RONGHE_SPOTTED_BOLLWORM_1986"
+      ]
+    },
+    "cotton__healthy": {
+      "class_name": "cotton__healthy",
+      "crop": "cotton",
+      "condition": "healthy",
+      "engine_version": "1.0",
+      "forecast_mode": "PREVENTION_ONLY",
+      "supports_7day_forecast": false,
+      "supports_30day_outlook": false,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": false,
+          "optimal_min_c": null,
+          "optimal_max_c": null,
+          "favorable_min_c": null,
+          "favorable_max_c": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "relative_humidity": {
+          "enabled": false,
+          "threshold_percent": null,
+          "optimal_min_percent": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "rainfall": {
+          "enabled": false,
+          "threshold_mm": null,
+          "accumulation_window_days": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "leaf_wetness": {
+          "enabled": false,
+          "minimum_hours": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "wind": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        },
+        "sunshine": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        }
+      },
+      "published_model": {
+        "available": false,
+        "model_type": null,
+        "equation": null,
+        "variables": [],
+        "output_interpretation": null,
+        "location_relevance": null,
+        "requires_local_calibration": false,
+        "source_ids": []
+      },
+      "risk_logic": {
+        "method": "PREVENTION_ONLY",
+        "rules": [
+          {
+            "rule_id": "CH_R1",
+            "description": "Healthy image detection triggers preventive monitoring rather than treatment."
+          },
+          {
+            "rule_id": "CH_R2",
+            "description": "Environmental pressure may still be evaluated separately for Alternaria, bacterial blight and bollworm."
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "NOT_APPLICABLE"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": false,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "No crop-loss estimate is generated for a healthy detection.",
+        "source_ids": []
+      },
+      "limitations": [
+        "A healthy image does not prove the entire cotton field is disease- or pest-free.",
+        "Preventive environmental monitoring should continue when conditions become favorable."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": false,
+        "requires_current_cibrc_verification": false
+      },
+      "evidence_level": "PREVENTION",
+      "source_ids": []
+    },
+    "grape__bacterial_leaf_spot": {
+      "class_name": "grape__bacterial_leaf_spot",
+      "crop": "grape",
+      "condition": "bacterial_leaf_spot",
+      "engine_version": "1.0",
+      "forecast_mode": "KNOWLEDGE_RULES",
+      "supports_7day_forecast": true,
+      "supports_30day_outlook": true,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": true,
+          "optimal_min_c": null,
+          "optimal_max_c": null,
+          "favorable_min_c": 25,
+          "favorable_max_c": 30,
+          "notes": "Government grape disease guidance reports favorable development around 25–30°C.",
+          "source_ids": [
+            "NHB_GRAPE_BACTERIAL_LEAF_SPOT"
+          ]
+        },
+        "relative_humidity": {
+          "enabled": true,
+          "threshold_percent": 80,
+          "optimal_min_percent": 80,
+          "notes": "High relative humidity around 80–90% is reported as favorable for bacterial leaf spot development.",
+          "source_ids": [
+            "NHB_GRAPE_BACTERIAL_LEAF_SPOT"
+          ]
+        },
+        "rainfall": {
+          "enabled": true,
+          "threshold_mm": null,
+          "accumulation_window_days": null,
+          "notes": "Wet and humid periods increase environmental suitability. No fixed rainfall threshold is assigned because the source does not justify one.",
+          "source_ids": [
+            "NHB_GRAPE_BACTERIAL_LEAF_SPOT"
+          ]
+        },
+        "leaf_wetness": {
+          "enabled": false,
+          "minimum_hours": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "wind": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        },
+        "sunshine": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        }
+      },
+      "published_model": {
+        "available": false,
+        "model_type": null,
+        "equation": null,
+        "variables": [],
+        "output_interpretation": null,
+        "location_relevance": null,
+        "requires_local_calibration": false,
+        "source_ids": []
+      },
+      "risk_logic": {
+        "method": "EVIDENCE_WEIGHTED_RULES",
+        "rules": [
+          {
+            "rule_id": "GBLS_R1",
+            "description": "Temperature within 25–30°C increases environmental suitability.",
+            "factor": "temperature"
+          },
+          {
+            "rule_id": "GBLS_R2",
+            "description": "Relative humidity >=80% increases environmental suitability.",
+            "factor": "relative_humidity"
+          },
+          {
+            "rule_id": "GBLS_R3",
+            "description": "Wet/rainy conditions strengthen risk when temperature and humidity are already favorable.",
+            "factor": "rainfall"
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "TO_BE_CALIBRATED_FROM_RULE_ENGINE"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": true,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "Current evidence supports disease occurrence and environmental suitability but does not yet provide a reliable generalized yield-loss percentage for deployment.",
+        "source_ids": [
+          "NHB_GRAPE_BACTERIAL_LEAF_SPOT"
+        ]
+      },
+      "limitations": [
+        "Risk output represents environmental suitability, not laboratory-confirmed disease progression.",
+        "No fixed rainfall threshold is currently supported.",
+        "Biological-control evidence from ICAR-NRC Grapes-linked laboratory work is in-vitro only and is not converted into field treatment prescriptions."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": true,
+        "requires_current_cibrc_verification": true
+      },
+      "evidence_level": "SUPPORTED",
+      "source_ids": [
+        "NHB_GRAPE_BACTERIAL_LEAF_SPOT",
+        "ICAR_NRC_GRAPE_BLS_2017"
+      ]
+    },
+    "grape__downy_mildew": {
+      "class_name": "grape__downy_mildew",
+      "crop": "grape",
+      "condition": "downy_mildew",
+      "engine_version": "1.0",
+      "forecast_mode": "PUBLISHED_MODEL_PLUS_RULES",
+      "supports_7day_forecast": true,
+      "supports_30day_outlook": true,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": true,
+          "optimal_min_c": null,
+          "optimal_max_c": null,
+          "favorable_min_c": null,
+          "favorable_max_c": null,
+          "notes": "Temperature is used together with wetness/moisture conditions in published grape downy mildew infection models. No single universal temperature interval is frozen here.",
+          "source_ids": [
+            "KENTUCKY_GRAPE_DOWNY_MODEL",
+            "TNAU_GRAPE_DOWNY"
+          ]
+        },
+        "relative_humidity": {
+          "enabled": true,
+          "threshold_percent": null,
+          "optimal_min_percent": null,
+          "notes": "High humidity supports infection risk, but humidity alone is insufficient for forecasting.",
+          "source_ids": [
+            "TNAU_GRAPE_DOWNY"
+          ]
+        },
+        "rainfall": {
+          "enabled": true,
+          "threshold_mm": null,
+          "accumulation_window_days": null,
+          "notes": "Rainfall and prolonged wet periods strongly increase risk. Published models emphasize wetness duration and temperature during wetness rather than a universal rainfall cutoff.",
+          "source_ids": [
+            "KENTUCKY_GRAPE_DOWNY_MODEL",
+            "TNAU_GRAPE_DOWNY"
+          ]
+        },
+        "leaf_wetness": {
+          "enabled": true,
+          "minimum_hours": null,
+          "notes": "Leaf wetness duration is a key predictor in published downy mildew infection models. If direct leaf-wetness data are unavailable, rainfall and sustained high humidity may be used only as proxies.",
+          "source_ids": [
+            "KENTUCKY_GRAPE_DOWNY_MODEL"
+          ]
+        },
+        "wind": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        },
+        "sunshine": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        }
+      },
+      "published_model": {
+        "available": true,
+        "model_type": "Leaf-wetness-duration and temperature-based infection-risk model",
+        "equation": null,
+        "variables": [
+          "leaf_wetness_duration",
+          "mean_temperature_during_wetness"
+        ],
+        "output_interpretation": "Relative infection risk under favorable wetness and temperature conditions.",
+        "location_relevance": "External grape disease model; requires local validation before quantitative deployment in Maharashtra.",
+        "requires_local_calibration": true,
+        "source_ids": [
+          "KENTUCKY_GRAPE_DOWNY_MODEL"
+        ]
+      },
+      "risk_logic": {
+        "method": "PUBLISHED_MODEL_WITH_PROXY_RULES",
+        "rules": [
+          {
+            "rule_id": "GDM_R1",
+            "description": "Longer leaf-wetness duration increases infection risk.",
+            "factor": "leaf_wetness"
+          },
+          {
+            "rule_id": "GDM_R2",
+            "description": "Temperature during wet periods modifies infection suitability.",
+            "factor": "temperature"
+          },
+          {
+            "rule_id": "GDM_R3",
+            "description": "Rainfall or sustained high humidity can act as proxy evidence for wetness when direct leaf-wetness data are unavailable.",
+            "factor": "rainfall_relative_humidity"
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "TO_BE_CALIBRATED_FROM_PUBLISHED_MODEL"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": true,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "No deployment-grade generalized yield-loss range has yet been verified for this disease-crop-location combination.",
+        "source_ids": []
+      },
+      "limitations": [
+        "Direct leaf-wetness duration may not be available from the weather API.",
+        "Rainfall and humidity used as wetness proxies introduce uncertainty.",
+        "External published infection models require local calibration for Maharashtra."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": true,
+        "requires_current_cibrc_verification": true
+      },
+      "evidence_level": "STRONG_ENVIRONMENTAL_MODEL",
+      "source_ids": [
+        "KENTUCKY_GRAPE_DOWNY_MODEL",
+        "TNAU_GRAPE_DOWNY"
+      ]
+    },
+    "grape__healthy": {
+      "class_name": "grape__healthy",
+      "crop": "grape",
+      "condition": "healthy",
+      "engine_version": "1.0",
+      "forecast_mode": "PREVENTION_ONLY",
+      "supports_7day_forecast": false,
+      "supports_30day_outlook": false,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": false,
+          "optimal_min_c": null,
+          "optimal_max_c": null,
+          "favorable_min_c": null,
+          "favorable_max_c": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "relative_humidity": {
+          "enabled": false,
+          "threshold_percent": null,
+          "optimal_min_percent": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "rainfall": {
+          "enabled": false,
+          "threshold_mm": null,
+          "accumulation_window_days": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "leaf_wetness": {
+          "enabled": false,
+          "minimum_hours": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "wind": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        },
+        "sunshine": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        }
+      },
+      "published_model": {
+        "available": false,
+        "model_type": null,
+        "equation": null,
+        "variables": [],
+        "output_interpretation": null,
+        "location_relevance": null,
+        "requires_local_calibration": false,
+        "source_ids": []
+      },
+      "risk_logic": {
+        "method": "PREVENTION_ONLY",
+        "rules": [
+          {
+            "rule_id": "GH_R1",
+            "description": "Healthy detection triggers preventive monitoring rather than treatment."
+          },
+          {
+            "rule_id": "GH_R2",
+            "description": "The system may still calculate environmental disease pressure for major grape diseases using separate disease-risk modules."
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "NOT_APPLICABLE"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": false,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "No crop-loss estimate is generated for a healthy detection.",
+        "source_ids": []
+      },
+      "limitations": [
+        "Healthy image classification does not prove the entire vineyard is disease-free.",
+        "Preventive monitoring should continue when environmental conditions become favorable for disease."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": false,
+        "requires_current_cibrc_verification": false
+      },
+      "evidence_level": "PREVENTION",
+      "source_ids": []
+    },
+    "grape__powdery_mildew": {
+      "class_name": "grape__powdery_mildew",
+      "crop": "grape",
+      "condition": "powdery_mildew",
+      "engine_version": "1.0",
+      "forecast_mode": "KNOWLEDGE_RULES",
+      "supports_7day_forecast": true,
+      "supports_30day_outlook": true,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": true,
+          "optimal_min_c": null,
+          "optimal_max_c": null,
+          "favorable_min_c": null,
+          "favorable_max_c": null,
+          "notes": "Temperature is a major driver of powdery mildew risk, but no universal interval is frozen here without a locally validated source-specific threshold.",
+          "source_ids": [
+            "TNAU_GRAPE_POWDERY"
+          ]
+        },
+        "relative_humidity": {
+          "enabled": true,
+          "threshold_percent": null,
+          "optimal_min_percent": null,
+          "notes": "Humidity affects powdery mildew development. Risk logic should use the disease-specific published guidance rather than a generic high-humidity threshold.",
+          "source_ids": [
+            "TNAU_GRAPE_POWDERY"
+          ]
+        },
+        "rainfall": {
+          "enabled": true,
+          "threshold_mm": null,
+          "accumulation_window_days": null,
+          "notes": "Rainfall is considered as a modifying factor, but is not treated the same way as downy mildew.",
+          "source_ids": [
+            "TNAU_GRAPE_POWDERY"
+          ]
+        },
+        "leaf_wetness": {
+          "enabled": false,
+          "minimum_hours": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "wind": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        },
+        "sunshine": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        }
+      },
+      "published_model": {
+        "available": false,
+        "model_type": null,
+        "equation": null,
+        "variables": [],
+        "output_interpretation": null,
+        "location_relevance": null,
+        "requires_local_calibration": false,
+        "source_ids": []
+      },
+      "risk_logic": {
+        "method": "EVIDENCE_WEIGHTED_RULES",
+        "rules": [
+          {
+            "rule_id": "GPM_R1",
+            "description": "Temperature suitability contributes to powdery mildew risk.",
+            "factor": "temperature"
+          },
+          {
+            "rule_id": "GPM_R2",
+            "description": "Humidity modifies disease suitability.",
+            "factor": "relative_humidity"
+          },
+          {
+            "rule_id": "GPM_R3",
+            "description": "Recent disease detection increases operational case risk even when environmental conditions become less favorable.",
+            "factor": "case_status"
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "TO_BE_CALIBRATED_FROM_RULE_ENGINE"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": true,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "No verified generalized yield-loss percentage is currently frozen for product use.",
+        "source_ids": []
+      },
+      "limitations": [
+        "Current grape longitudinal dataset was not accepted as the deployment basis because strong seasonality dominated supervised ML performance.",
+        "Risk output should therefore be interpreted as epidemiological environmental suitability rather than an ML disease probability."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": true,
+        "requires_current_cibrc_verification": true
+      },
+      "evidence_level": "SUPPORTED",
+      "source_ids": [
+        "TNAU_GRAPE_POWDERY"
+      ]
+    },
+    "onion__healthy": {
+      "class_name": "onion__healthy",
+      "crop": "onion",
+      "condition": "healthy",
+      "engine_version": "1.0",
+      "forecast_mode": "PREVENTION_ONLY",
+      "supports_7day_forecast": false,
+      "supports_30day_outlook": false,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": false,
+          "optimal_min_c": null,
+          "optimal_max_c": null,
+          "favorable_min_c": null,
+          "favorable_max_c": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "relative_humidity": {
+          "enabled": false,
+          "threshold_percent": null,
+          "optimal_min_percent": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "rainfall": {
+          "enabled": false,
+          "threshold_mm": null,
+          "accumulation_window_days": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "leaf_wetness": {
+          "enabled": false,
+          "minimum_hours": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "wind": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        },
+        "sunshine": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        }
+      },
+      "published_model": {
+        "available": false,
+        "model_type": null,
+        "equation": null,
+        "variables": [],
+        "output_interpretation": null,
+        "location_relevance": null,
+        "requires_local_calibration": false,
+        "source_ids": []
+      },
+      "risk_logic": {
+        "method": "PREVENTION_ONLY",
+        "rules": [
+          {
+            "rule_id": "OH_R1",
+            "description": "Healthy image detection triggers preventive monitoring rather than treatment."
+          },
+          {
+            "rule_id": "OH_R2",
+            "description": "Environmental pressure may still be monitored separately for Purple Blotch and Stemphylium Leaf Blight."
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "NOT_APPLICABLE"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": false,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "No yield-loss estimate is generated for a healthy detection.",
+        "source_ids": []
+      },
+      "limitations": [
+        "A healthy image does not prove that the entire onion field is disease-free.",
+        "Preventive monitoring should continue when weather becomes favorable for Purple Blotch or Stemphylium Leaf Blight."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": false,
+        "requires_current_cibrc_verification": false
+      },
+      "evidence_level": "PREVENTION",
+      "source_ids": []
+    },
+    "onion__purple_blotch": {
+      "class_name": "onion__purple_blotch",
+      "crop": "onion",
+      "condition": "purple_blotch",
+      "engine_version": "1.0",
+      "forecast_mode": "PUBLISHED_MODEL_PLUS_RULES",
+      "supports_7day_forecast": true,
+      "supports_30day_outlook": true,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": true,
+          "optimal_min_c": 20,
+          "optimal_max_c": 25,
+          "favorable_min_c": 20,
+          "favorable_max_c": 25,
+          "notes": "Indian agricultural literature reports approximately 20–25°C as favorable for purple blotch development.",
+          "source_ids": [
+            "ICAR_ONION_PURPLE_BLOTCH",
+            "IARI_PURPLE_BLOTCH"
+          ]
+        },
+        "relative_humidity": {
+          "enabled": true,
+          "threshold_percent": 75,
+          "optimal_min_percent": 75,
+          "notes": "Relative humidity above approximately 75% is reported as favorable for purple blotch development.",
+          "source_ids": [
+            "IARI_PURPLE_BLOTCH"
+          ]
+        },
+        "rainfall": {
+          "enabled": true,
+          "threshold_mm": null,
+          "accumulation_window_days": null,
+          "notes": "Rainfall and prolonged humid/wet conditions may favor disease development. No universal rainfall threshold is frozen.",
+          "source_ids": [
+            "ICAR_ONION_PURPLE_BLOTCH"
+          ]
+        },
+        "leaf_wetness": {
+          "enabled": false,
+          "minimum_hours": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "wind": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        },
+        "sunshine": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        }
+      },
+      "published_model": {
+        "available": true,
+        "model_type": "Published field disease-weather relationship / regression evidence",
+        "equation": null,
+        "variables": [
+          "temperature",
+          "relative_humidity",
+          "rainfall"
+        ],
+        "output_interpretation": "Environmental conditions associated with purple blotch disease progression.",
+        "location_relevance": "Indian field evidence; suitable for rule design but still requires local calibration for exact quantitative risk probabilities.",
+        "requires_local_calibration": true,
+        "source_ids": [
+          "ICAR_ONION_PURPLE_BLOTCH",
+          "IARI_PURPLE_BLOTCH"
+        ]
+      },
+      "risk_logic": {
+        "method": "PUBLISHED_ENVIRONMENTAL_RELATIONSHIP",
+        "rules": [
+          {
+            "rule_id": "OPB_R1",
+            "description": "Temperature in the 20–25°C range increases environmental suitability.",
+            "factor": "temperature"
+          },
+          {
+            "rule_id": "OPB_R2",
+            "description": "Relative humidity >=75% increases environmental suitability.",
+            "factor": "relative_humidity"
+          },
+          {
+            "rule_id": "OPB_R3",
+            "description": "Rainfall or prolonged wet/humid periods strengthen risk when temperature is favorable.",
+            "factor": "rainfall_relative_humidity"
+          },
+          {
+            "rule_id": "OPB_R4",
+            "description": "Current confirmed disease presence increases operational case risk.",
+            "factor": "case_status"
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "TO_BE_CALIBRATED_FROM_RULE_ENGINE"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": true,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "Current evidence supports disease progression and environmental favorability. A generalized untreated yield-loss percentage has not yet been frozen for deployment.",
+        "source_ids": [
+          "ICAR_ONION_PURPLE_BLOTCH"
+        ]
+      },
+      "limitations": [
+        "Risk represents environmental suitability and disease pressure, not a guaranteed outbreak probability.",
+        "Published field relationships may vary by cultivar, season and local agronomic practice.",
+        "No fixed rainfall cutoff is currently supported."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": true,
+        "requires_current_cibrc_verification": true
+      },
+      "evidence_level": "STRONG_INDIAN_FIELD_EVIDENCE",
+      "source_ids": [
+        "ICAR_ONION_PURPLE_BLOTCH",
+        "IARI_PURPLE_BLOTCH"
+      ]
+    },
+    "onion__stemphylium_leaf_blight": {
+      "class_name": "onion__stemphylium_leaf_blight",
+      "crop": "onion",
+      "condition": "stemphylium_leaf_blight",
+      "engine_version": "1.0",
+      "forecast_mode": "PUBLISHED_MODEL_PLUS_RULES",
+      "supports_7day_forecast": true,
+      "supports_30day_outlook": true,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": true,
+          "optimal_min_c": 16.25,
+          "optimal_max_c": 22.5,
+          "favorable_min_c": 16.25,
+          "favorable_max_c": 22.5,
+          "notes": "A multi-season field study at Chitegaon Phata, Nashik reported approximately 16.25–22.5°C as favorable during Stemphylium leaf blight development.",
+          "source_ids": [
+            "ICAR_ONION_STEMPHYLIUM_NASHIK_2014"
+          ]
+        },
+        "relative_humidity": {
+          "enabled": true,
+          "threshold_percent": 85,
+          "optimal_min_percent": 85,
+          "notes": "The Nashik field study reported relative humidity around 85–90% during favorable disease development.",
+          "source_ids": [
+            "ICAR_ONION_STEMPHYLIUM_NASHIK_2014"
+          ]
+        },
+        "rainfall": {
+          "enabled": false,
+          "threshold_mm": null,
+          "accumulation_window_days": null,
+          "notes": "The published Nashik study focused primarily on temperature and relative humidity relationships. No independent rainfall threshold is frozen here.",
+          "source_ids": [
+            "ICAR_ONION_STEMPHYLIUM_NASHIK_2014"
+          ]
+        },
+        "leaf_wetness": {
+          "enabled": false,
+          "minimum_hours": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "wind": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        },
+        "sunshine": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        }
+      },
+      "published_model": {
+        "available": true,
+        "model_type": "Published stepwise regression / field epidemiological model",
+        "equation": "Y = -103.908 + 0.0953*X1 + 5.085*X2 + 0.902*X3 - 0.971*X4",
+        "variables": [
+          "X1 = maximum temperature",
+          "X2 = minimum temperature",
+          "X3 = maximum relative humidity",
+          "X4 = minimum relative humidity"
+        ],
+        "output_interpretation": "Published regression relationship for disease intensity under specific seasonal conditions in the Nashik field study.",
+        "location_relevance": "High relevance: developed from multi-season field observations at Chitegaon Phata, Nashik, Maharashtra.",
+        "requires_local_calibration": true,
+        "source_ids": [
+          "ICAR_ONION_STEMPHYLIUM_NASHIK_2014"
+        ]
+      },
+      "risk_logic": {
+        "method": "PUBLISHED_REGRESSION_PLUS_ENVIRONMENTAL_RULES",
+        "rules": [
+          {
+            "rule_id": "OSLB_R1",
+            "description": "Mean/favorable temperature around 16.25–22.5°C increases environmental suitability.",
+            "factor": "temperature"
+          },
+          {
+            "rule_id": "OSLB_R2",
+            "description": "Relative humidity around 85–90% increases disease suitability.",
+            "factor": "relative_humidity"
+          },
+          {
+            "rule_id": "OSLB_R3",
+            "description": "Published Nashik regression may be used as a supporting disease-pressure indicator when input variables and units match the original study.",
+            "factor": "published_model"
+          },
+          {
+            "rule_id": "OSLB_R4",
+            "description": "Current confirmed infection raises case-specific operational risk.",
+            "factor": "case_status"
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "TO_BE_CALIBRATED_FROM_PUBLISHED_MODEL"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": true,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "The current source reports percent disease intensity and AUDPC, but does not justify a generalized crop-yield-loss percentage for direct farmer display.",
+        "source_ids": [
+          "ICAR_ONION_STEMPHYLIUM_NASHIK_2014"
+        ]
+      },
+      "limitations": [
+        "The published regression is study-specific and should not be interpreted directly as a calibrated probability.",
+        "Regression output must only be used when variable definitions and units match the source study.",
+        "Local cultivar, planting date and management practices may affect disease behavior."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": true,
+        "requires_current_cibrc_verification": true
+      },
+      "evidence_level": "VERY_STRONG_NASHIK_FIELD_EVIDENCE",
+      "source_ids": [
+        "ICAR_ONION_STEMPHYLIUM_NASHIK_2014"
+      ]
+    },
+    "tomato__early_blight": {
+      "class_name": "tomato__early_blight",
+      "crop": "tomato",
+      "condition": "early_blight",
+      "engine_version": "1.0",
+      "forecast_mode": "PUBLISHED_MODEL_PLUS_RULES",
+      "supports_7day_forecast": true,
+      "supports_30day_outlook": true,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": true,
+          "optimal_min_c": null,
+          "optimal_max_c": null,
+          "favorable_min_c": null,
+          "favorable_max_c": null,
+          "notes": "Published Indian early-blight forecasting work used temperature together with humidity, rainfall, sunshine and wind variables. No single universal temperature interval is frozen here.",
+          "source_ids": [
+            "ICAR_TOMATO_EARLY_BLIGHT_ML_2019",
+            "UC_FAST_TOMATO_EARLY_BLIGHT"
+          ]
+        },
+        "relative_humidity": {
+          "enabled": true,
+          "threshold_percent": 90,
+          "optimal_min_percent": null,
+          "notes": "FAST-type tomato early-blight models use periods of very high relative humidity, commonly above 90%, together with temperature and moisture conditions.",
+          "source_ids": [
+            "UC_FAST_TOMATO_EARLY_BLIGHT"
+          ]
+        },
+        "rainfall": {
+          "enabled": true,
+          "threshold_mm": null,
+          "accumulation_window_days": null,
+          "notes": "Rainfall contributes to prolonged moisture and is included in published disease-weather forecasting approaches.",
+          "source_ids": [
+            "ICAR_TOMATO_EARLY_BLIGHT_ML_2019",
+            "UC_FAST_TOMATO_EARLY_BLIGHT"
+          ]
+        },
+        "leaf_wetness": {
+          "enabled": true,
+          "minimum_hours": null,
+          "notes": "Leaf-wetness duration is an important component of FAST-type early-blight forecasting. Direct leaf-wetness may be unavailable from the weather API and may require proxy estimation.",
+          "source_ids": [
+            "UC_FAST_TOMATO_EARLY_BLIGHT"
+          ]
+        },
+        "wind": {
+          "enabled": true,
+          "notes": "Wind speed was included among meteorological predictors in the published Indian multi-location early-blight modelling study.",
+          "source_ids": [
+            "ICAR_TOMATO_EARLY_BLIGHT_ML_2019"
+          ]
+        },
+        "sunshine": {
+          "enabled": true,
+          "notes": "Bright sunshine duration was included as a predictor in the published Indian early-blight study.",
+          "source_ids": [
+            "ICAR_TOMATO_EARLY_BLIGHT_ML_2019"
+          ]
+        }
+      },
+      "published_model": {
+        "available": true,
+        "model_type": "Indian multi-location weather-based disease forecasting study with MLR and Support Vector Regression",
+        "equation": null,
+        "variables": [
+          "maximum temperature",
+          "minimum temperature",
+          "morning relative humidity",
+          "evening relative humidity",
+          "sunshine duration",
+          "wind speed",
+          "rainfall",
+          "number of rainy days",
+          "lagged weather variables"
+        ],
+        "output_interpretation": "Prediction of early-blight disease severity using meteorological variables.",
+        "location_relevance": "Strong Indian relevance, including a Maharashtra location (Rahuri), but raw training data and fitted deployment parameters are not available for direct reproduction.",
+        "requires_local_calibration": true,
+        "source_ids": [
+          "ICAR_TOMATO_EARLY_BLIGHT_ML_2019"
+        ]
+      },
+      "risk_logic": {
+        "method": "PUBLISHED_MODEL_PLUS_FAST_STYLE_RULES",
+        "rules": [
+          {
+            "rule_id": "TEB_R1",
+            "description": "Temperature during prolonged wet or highly humid periods modifies early-blight infection risk.",
+            "factor": "temperature"
+          },
+          {
+            "rule_id": "TEB_R2",
+            "description": "Relative humidity >=90% increases moisture-related disease pressure.",
+            "factor": "relative_humidity"
+          },
+          {
+            "rule_id": "TEB_R3",
+            "description": "Rainfall and prolonged leaf wetness increase infection suitability.",
+            "factor": "rainfall_leaf_wetness"
+          },
+          {
+            "rule_id": "TEB_R4",
+            "description": "Recent or current confirmed disease presence increases case-specific risk.",
+            "factor": "case_status"
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "TO_BE_CALIBRATED_FROM_RULE_ENGINE"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": true,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "Disease severity forecasting evidence is strong, but a generalized farmer-facing yield-loss percentage has not yet been verified for the current pilot context.",
+        "source_ids": [
+          "ICAR_TOMATO_EARLY_BLIGHT_ML_2019"
+        ]
+      },
+      "limitations": [
+        "The published Indian SVR model cannot be reproduced exactly without the original raw data and fitted parameters.",
+        "FAST-type models are external epidemiological models and require local calibration.",
+        "Weather-based risk should not be interpreted as guaranteed disease progression."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": true,
+        "requires_current_cibrc_verification": true
+      },
+      "evidence_level": "VERY_STRONG_INDIAN_WEATHER_MODEL_EVIDENCE",
+      "source_ids": [
+        "ICAR_TOMATO_EARLY_BLIGHT_ML_2019",
+        "UC_FAST_TOMATO_EARLY_BLIGHT"
+      ]
+    },
+    "tomato__healthy": {
+      "class_name": "tomato__healthy",
+      "crop": "tomato",
+      "condition": "healthy",
+      "engine_version": "1.0",
+      "forecast_mode": "PREVENTION_ONLY",
+      "supports_7day_forecast": false,
+      "supports_30day_outlook": false,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": false,
+          "optimal_min_c": null,
+          "optimal_max_c": null,
+          "favorable_min_c": null,
+          "favorable_max_c": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "relative_humidity": {
+          "enabled": false,
+          "threshold_percent": null,
+          "optimal_min_percent": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "rainfall": {
+          "enabled": false,
+          "threshold_mm": null,
+          "accumulation_window_days": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "leaf_wetness": {
+          "enabled": false,
+          "minimum_hours": null,
+          "notes": null,
+          "source_ids": []
+        },
+        "wind": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        },
+        "sunshine": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        }
+      },
+      "published_model": {
+        "available": false,
+        "model_type": null,
+        "equation": null,
+        "variables": [],
+        "output_interpretation": null,
+        "location_relevance": null,
+        "requires_local_calibration": false,
+        "source_ids": []
+      },
+      "risk_logic": {
+        "method": "PREVENTION_ONLY",
+        "rules": [
+          {
+            "rule_id": "TH_R1",
+            "description": "Healthy image detection triggers preventive monitoring rather than disease treatment."
+          },
+          {
+            "rule_id": "TH_R2",
+            "description": "Environmental disease pressure may still be monitored for early blight, late blight and leaf mold."
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "NOT_APPLICABLE"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": false,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "No crop-loss estimate is generated for a healthy detection.",
+        "source_ids": []
+      },
+      "limitations": [
+        "A healthy leaf image does not prove that the entire tomato field is disease-free.",
+        "Environmental monitoring should continue when weather becomes favorable for major tomato diseases."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": false,
+        "requires_current_cibrc_verification": false
+      },
+      "evidence_level": "PREVENTION",
+      "source_ids": []
+    },
+    "tomato__late_blight": {
+      "class_name": "tomato__late_blight",
+      "crop": "tomato",
+      "condition": "late_blight",
+      "engine_version": "1.0",
+      "forecast_mode": "PUBLISHED_MODEL_PLUS_RULES",
+      "supports_7day_forecast": true,
+      "supports_30day_outlook": true,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": true,
+          "optimal_min_c": null,
+          "optimal_max_c": null,
+          "favorable_min_c": null,
+          "favorable_max_c": null,
+          "notes": "Late-blight epidemiological models use temperature together with relative humidity, rainfall and wetness duration.",
+          "source_ids": [
+            "UC_TOMATO_LATE_BLIGHT_IPI"
+          ]
+        },
+        "relative_humidity": {
+          "enabled": true,
+          "threshold_percent": 90,
+          "optimal_min_percent": null,
+          "notes": "Periods of relative humidity above approximately 90% are commonly used in late-blight infection-period models.",
+          "source_ids": [
+            "UC_TOMATO_LATE_BLIGHT_IPI"
+          ]
+        },
+        "rainfall": {
+          "enabled": true,
+          "threshold_mm": null,
+          "accumulation_window_days": null,
+          "notes": "Rainfall contributes to wetness and infection-period development. No universal rainfall cutoff is frozen.",
+          "source_ids": [
+            "UC_TOMATO_LATE_BLIGHT_IPI"
+          ]
+        },
+        "leaf_wetness": {
+          "enabled": true,
+          "minimum_hours": null,
+          "notes": "Prolonged moisture and wetness are key epidemiological drivers. Weather-API rainfall and humidity may be used only as proxies when measured leaf-wetness data are unavailable.",
+          "source_ids": [
+            "UC_TOMATO_LATE_BLIGHT_IPI"
+          ]
+        },
+        "wind": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        },
+        "sunshine": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        }
+      },
+      "published_model": {
+        "available": true,
+        "model_type": "Late-blight infection-period / disease-pressure epidemiological model",
+        "equation": null,
+        "variables": [
+          "temperature",
+          "relative humidity",
+          "rainfall",
+          "wetness duration"
+        ],
+        "output_interpretation": "Relative late-blight infection pressure under favorable weather conditions.",
+        "location_relevance": "External epidemiological model; useful as a scientific rule framework but requires validation before calibrated use in Pune/Maharashtra.",
+        "requires_local_calibration": true,
+        "source_ids": [
+          "UC_TOMATO_LATE_BLIGHT_IPI"
+        ]
+      },
+      "risk_logic": {
+        "method": "PUBLISHED_INFECTION_PERIOD_MODEL",
+        "rules": [
+          {
+            "rule_id": "TLB_R1",
+            "description": "Sustained high relative humidity increases late-blight risk.",
+            "factor": "relative_humidity"
+          },
+          {
+            "rule_id": "TLB_R2",
+            "description": "Temperature during humid/wet periods controls infection suitability.",
+            "factor": "temperature"
+          },
+          {
+            "rule_id": "TLB_R3",
+            "description": "Rainfall and prolonged wetness strengthen infection pressure.",
+            "factor": "rainfall_leaf_wetness"
+          },
+          {
+            "rule_id": "TLB_R4",
+            "description": "Current late-blight detection substantially increases case-specific operational risk.",
+            "factor": "case_status"
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "TO_BE_CALIBRATED_FROM_PUBLISHED_MODEL"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": true,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "Late blight can cause severe crop damage, but no generalized yield-loss percentage is frozen until crop-stage and regional impact literature are separately validated.",
+        "source_ids": []
+      },
+      "limitations": [
+        "Current infection-period evidence is based on external models and requires local calibration.",
+        "Humidity and rainfall are imperfect proxies for actual canopy leaf wetness.",
+        "Risk output is environmental disease pressure, not a guaranteed infection probability."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": true,
+        "requires_current_cibrc_verification": true
+      },
+      "evidence_level": "STRONG_EPIDEMIOLOGICAL_MODEL",
+      "source_ids": [
+        "UC_TOMATO_LATE_BLIGHT_IPI"
+      ]
+    },
+    "tomato__leaf_mold": {
+      "class_name": "tomato__leaf_mold",
+      "crop": "tomato",
+      "condition": "leaf_mold",
+      "engine_version": "1.0",
+      "forecast_mode": "KNOWLEDGE_RULES",
+      "supports_7day_forecast": true,
+      "supports_30day_outlook": true,
+      "environmental_factors": {
+        "temperature": {
+          "enabled": true,
+          "optimal_min_c": 22,
+          "optimal_max_c": 24,
+          "favorable_min_c": 20,
+          "favorable_max_c": 25,
+          "notes": "University extension guidance reports favorable leaf-mold development approximately in the 20–25°C range, with optimum around 22–24°C.",
+          "source_ids": [
+            "UMN_TOMATO_LEAF_MOLD",
+            "UCONN_TOMATO_LEAF_MOLD_2026"
+          ]
+        },
+        "relative_humidity": {
+          "enabled": true,
+          "threshold_percent": 85,
+          "optimal_min_percent": 85,
+          "notes": "Relative humidity at or above approximately 85% strongly favors tomato leaf mold development.",
+          "source_ids": [
+            "UMN_TOMATO_LEAF_MOLD",
+            "UCONN_TOMATO_LEAF_MOLD_2026"
+          ]
+        },
+        "rainfall": {
+          "enabled": false,
+          "threshold_mm": null,
+          "accumulation_window_days": null,
+          "notes": "Rainfall is not treated as a primary independent threshold. The major environmental driver is sustained high humidity, especially in protected or poorly ventilated cultivation.",
+          "source_ids": [
+            "UMN_TOMATO_LEAF_MOLD",
+            "UCONN_TOMATO_LEAF_MOLD_2026"
+          ]
+        },
+        "leaf_wetness": {
+          "enabled": true,
+          "minimum_hours": null,
+          "notes": "Persistent moisture and humid canopy conditions support disease development, although direct leaf-wetness duration is not frozen.",
+          "source_ids": [
+            "UMN_TOMATO_LEAF_MOLD",
+            "CORNELL_TOMATO_LEAF_MOLD"
+          ]
+        },
+        "wind": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        },
+        "sunshine": {
+          "enabled": false,
+          "notes": null,
+          "source_ids": []
+        }
+      },
+      "published_model": {
+        "available": false,
+        "model_type": null,
+        "equation": null,
+        "variables": [],
+        "output_interpretation": null,
+        "location_relevance": null,
+        "requires_local_calibration": false,
+        "source_ids": []
+      },
+      "risk_logic": {
+        "method": "EVIDENCE_WEIGHTED_RULES",
+        "rules": [
+          {
+            "rule_id": "TLM_R1",
+            "description": "Temperature approximately 20–25°C increases environmental suitability.",
+            "factor": "temperature"
+          },
+          {
+            "rule_id": "TLM_R2",
+            "description": "Relative humidity >=85% strongly increases leaf-mold risk.",
+            "factor": "relative_humidity"
+          },
+          {
+            "rule_id": "TLM_R3",
+            "description": "Poor ventilation or protected cultivation can strengthen risk under persistent high humidity.",
+            "factor": "cultivation_environment"
+          },
+          {
+            "rule_id": "TLM_R4",
+            "description": "Current confirmed leaf-mold detection increases operational risk.",
+            "factor": "case_status"
+          }
+        ],
+        "score_range": [
+          0,
+          100
+        ],
+        "risk_categories": {
+          "low": null,
+          "moderate": null,
+          "high": null,
+          "very_high": null
+        },
+        "threshold_status": "TO_BE_CALIBRATED_FROM_RULE_ENGINE"
+      },
+      "crop_stage_modifiers": {
+        "enabled": false,
+        "stages": {
+          "young": null,
+          "vegetative": null,
+          "flowering": null,
+          "fruiting": null,
+          "harvest": null
+        },
+        "source_ids": []
+      },
+      "case_status_modifiers": {
+        "enabled": true,
+        "model1_detection_present": null,
+        "recent_case_present": null,
+        "trend_better": null,
+        "trend_same": null,
+        "trend_worse": null,
+        "source_ids": []
+      },
+      "impact_evidence": {
+        "quantitative_loss_supported": false,
+        "untreated_loss_range_percent": null,
+        "managed_loss_range_percent": null,
+        "yield_preserved_range_percent": null,
+        "crop_stage_specific": false,
+        "affected_extent_specific": false,
+        "evidence_notes": "Current sources support environmental suitability and management guidance but do not provide a deployment-ready generalized yield-loss percentage.",
+        "source_ids": [
+          "UMN_TOMATO_LEAF_MOLD",
+          "CORNELL_TOMATO_LEAF_MOLD",
+          "UCONN_TOMATO_LEAF_MOLD_2026"
+        ]
+      },
+      "limitations": [
+        "Leaf mold risk is strongly influenced by protected cultivation, canopy density and ventilation.",
+        "External extension sources require local validation for Maharashtra conditions.",
+        "A prior supporting research paper involving Cladosporium cladosporioides is not treated as standalone evidence for Passalora fulva forecasting."
+      ],
+      "safety_flags": {
+        "chemical_advice_hidden": true,
+        "requires_extension_officer_review": true,
+        "requires_current_cibrc_verification": true
+      },
+      "evidence_level": "SUPPORTED_WITH_EXTENSION_SOURCES",
+      "source_ids": [
+        "UMN_TOMATO_LEAF_MOLD",
+        "CORNELL_TOMATO_LEAF_MOLD",
+        "UCONN_TOMATO_LEAF_MOLD_2026",
+        "JHS_TOMATO_LEAF_MOLD"
+      ]
+    }
+  }
+}

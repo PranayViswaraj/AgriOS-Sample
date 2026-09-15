@@ -1,0 +1,43 @@
+{
+  "grape__bacterial_leaf_spot": [
+    "NHB_GRAPE_BACTERIAL_LEAF_SPOT",
+    "ICAR_NRC_GRAPE_BLS_2017"
+  ],
+  "grape__downy_mildew": [
+    "KENTUCKY_GRAPE_DOWNY_MODEL",
+    "TNAU_GRAPE_DOWNY"
+  ],
+  "grape__powdery_mildew": [
+    "TNAU_GRAPE_POWDERY"
+  ],
+  "onion__purple_blotch": [
+    "ICAR_ONION_PURPLE_BLOTCH",
+    "IARI_PURPLE_BLOTCH"
+  ],
+  "onion__stemphylium_leaf_blight": [
+    "ICAR_ONION_STEMPHYLIUM_NASHIK_2014"
+  ],
+  "cotton__alternaria_leaf_spot": [
+    "TNAU_COTTON_ALTERNARIA",
+    "ICAR_COTTON_ALTERNARIA_FIELD"
+  ],
+  "cotton__bacterial_blight": [
+    "ICAR_COTTON_BACTERIAL_BLIGHT_MODEL"
+  ],
+  "cotton__bollworm": [
+    "MASKE_DUBEY_RONGHE_SPOTTED_BOLLWORM_1986"
+  ],
+  "tomato__early_blight": [
+    "ICAR_TOMATO_EARLY_BLIGHT_ML_2019",
+    "UC_FAST_TOMATO_EARLY_BLIGHT"
+  ],
+  "tomato__late_blight": [
+    "UC_TOMATO_LATE_BLIGHT_IPI"
+  ],
+  "tomato__leaf_mold": [
+    "UMN_TOMATO_LEAF_MOLD",
+    "CORNELL_TOMATO_LEAF_MOLD",
+    "UCONN_TOMATO_LEAF_MOLD_2026",
+    "JHS_TOMATO_LEAF_MOLD"
+  ]
+}

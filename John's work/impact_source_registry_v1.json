@@ -1,0 +1,81 @@
+{
+  "ISTI_GRAPEVINE_MILDEWS_2023_2026": {
+    "title": "Forewarning and development of inoculum based management strategies for grapevine mildews using spore trapping technology",
+    "organization": "India Science, Technology & Innovation Portal / TNAU",
+    "evidence_scope": "Downy and powdery mildews collectively",
+    "reported_impact": "Severe grapevine mildew conditions may cause approximately 50–100% yield loss.",
+    "important_limitation": "The reported range refers collectively to grapevine mildews and cannot be attributed independently to downy mildew or powdery mildew for an individual farm."
+  },
+  "ONION_PURPLE_BLOTCH_TN_IPM": {
+    "title": "Integrated Pest and Disease Management Module for Shallots in Tamil Nadu",
+    "evidence_scope": "Purple blotch impact under Tamil Nadu conditions",
+    "reported_impact": "Yield loss reported around 20–25%.",
+    "important_limitation": "Contextual field literature value; not a severity-to-loss model for individual farms."
+  },
+  "ONION_PURPLE_BLOTCH_SEED_LOSS_ICAR": {
+    "title": "Development of purple blotch incited by Alternaria porri and its losses in seed crop of onion",
+    "evidence_scope": "Onion seed crop under severe infection",
+    "reported_impact": "Severe infection caused major reductions in multiple seed-yield components, including very high seed yield reduction.",
+    "important_limitation": "Seed-production system; not directly transferable to commercial bulb-yield estimation."
+  },
+  "ONION_STEMPHYLIUM_NASHIK_2014_IMPACT": {
+    "title": "Efficacy of fungicides alone and in combination with insecticides on foliar diseases of onion",
+    "location": "Nashik, Maharashtra",
+    "evidence_scope": "Three-year rabi field trial",
+    "reported_impact": "Best management treatment increased marketable yield by 31.64% over untreated check while reducing Stemphylium blight.",
+    "important_limitation": "Treatment benefit is not equivalent to a direct Stemphylium yield-loss percentage because combined fungicide/insecticide treatments were used."
+  },
+  "ONION_STEMPHYLIUM_SEVERE_REVIEW": {
+    "title": "Recent Indian onion Stemphylium field literature",
+    "evidence_scope": "Severe susceptible-cultivar disease context",
+    "reported_impact": "Stemphylium leaf blight has been reported to cause very high yield and quality losses under severe favorable conditions, with values approaching approximately 90% in some reports.",
+    "important_limitation": "Represents severe-context literature, not a field-specific predictive relationship."
+  },
+  "COTTON_ALTERNARIA_YIELD_LOSS_ANGRAU": {
+    "title": "Estimation of yield losses in cotton due to major fungal foliar diseases",
+    "evidence_scope": "Protected versus unprotected cotton genotypes",
+    "reported_impact": "Seed cotton yield losses reported as 16.14%, 20.34%, and 26.28% across three evaluated genotypes.",
+    "important_limitation": "Genotype- and experiment-specific values; not an individual-field loss equation."
+  },
+  "COTTON_BACTERIAL_BLIGHT_REVIEW_2024": {
+    "title": "Bacterial blight: Once a menacing disease of cotton in India, now tamed and fading from research spotlight",
+    "evidence_scope": "Historical Indian disease impact",
+    "reported_impact": "Historical regular yield losses of about 30–35% were reported in India.",
+    "important_limitation": "Historical population-level impact; disease prevalence and cultivar resistance have changed."
+  },
+  "COTTON_PINK_BOLLWORM_FIELD_LOSS_2025": {
+    "title": "Field estimates of current and predicted cotton yield loss due to pink bollworm and boll rot in India",
+    "organization": "ICAR-CICR and collaborators",
+    "evidence_scope": "Pink bollworm specifically",
+    "reported_impact": "Potential uncontrolled yield loss approximately 25%; estimated current annual loss under control conditions approximately 3.75%.",
+    "important_limitation": "Applies specifically to pink bollworm (Pectinophora gossypiella). AgroSmart Model 1 currently predicts generic bollworm only."
+  },
+  "TOMATO_EARLY_BLIGHT_YIELD_LOSS_2012": {
+    "title": "Assessment of Yield Loss Due to Early Blight (Alternaria solani) in Tomato",
+    "evidence_scope": "Two-year Indian field experiment",
+    "reported_impact": "Study developed a disease-severity/yield-loss relationship and reported substantial genotype-specific losses under protected versus unprotected conditions.",
+    "important_limitation": "Published relationship is experimental and location/genotype dependent; it requires validation before deployment as a farmer-specific loss equation."
+  },
+  "TOMATO_LATE_BLIGHT_IIHR_2022": {
+    "title": "Tomato late blight yield loss assessment and risk aversion with resistant hybrid",
+    "organization": "ICAR-IIHR",
+    "location": "Hesaraghatta, Bengaluru, India",
+    "evidence_scope": "Kharif 2019 and 2020 field trials",
+    "reported_impact": "Average yield losses were 79.47% in NS501, 75.53% in Arka Rakshak, and 12.84% in resistant Arka Abhed.",
+    "important_limitation": "Strong genotype dependence prevents use of one universal late-blight loss percentage."
+  },
+  "TOMATO_LEAF_MOLD_UCONN_2026": {
+    "title": "Tomato Leaf Mold",
+    "organization": "University of Connecticut IPM",
+    "evidence_scope": "Leaf mold consequences",
+    "reported_impact": "Leaf mold causes yellowing and can reduce overall yield, particularly under high-humidity protected cultivation.",
+    "important_limitation": "No transferable quantitative yield-loss relationship provided."
+  },
+  "TOMATO_LEAF_MOLD_CORNELL": {
+    "title": "Tomato Leaf Mold",
+    "organization": "Cornell Vegetables",
+    "evidence_scope": "Disease progression and production impact",
+    "reported_impact": "Early disease may have limited effect on fruit production, but increasing severity can cause defoliation and greater production impact.",
+    "important_limitation": "Qualitative disease-impact evidence only."
+  }
+}

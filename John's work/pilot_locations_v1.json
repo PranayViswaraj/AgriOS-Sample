@@ -1,0 +1,26 @@
+{
+  "niphad_grape": {
+    "name": "Niphad, Nashik",
+    "crop": "grape",
+    "lat": 20.08,
+    "lon": 74.11
+  },
+  "deola_onion": {
+    "name": "Deola, Nashik",
+    "crop": "onion",
+    "lat": 20.46,
+    "lon": 74.24
+  },
+  "ralegaon_cotton": {
+    "name": "Ralegaon, Yavatmal",
+    "crop": "cotton",
+    "lat": 20.73,
+    "lon": 78.32
+  },
+  "junnar_tomato": {
+    "name": "Junnar, Pune",
+    "crop": "tomato",
+    "lat": 19.21,
+    "lon": 73.88
+  }
+}

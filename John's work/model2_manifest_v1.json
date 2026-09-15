@@ -1,0 +1,94 @@
+{
+  "package_name": "AgroSmart Model 2 Deployment Package",
+  "version": "v1",
+  "schema": "AGROSMART_MODEL2_RESPONSE_V1",
+  "forecast_horizon_days": 7,
+  "forecast_type": "evidence_based_epidemiological_environmental_suitability",
+  "calibrated_probability": false,
+  "personalized_yield_loss_percentage": false,
+  "weather_directly_estimates_crop_loss": false,
+  "active_classes": [
+    "cotton__alternaria_leaf_spot",
+    "cotton__bacterial_blight",
+    "cotton__bollworm",
+    "grape__bacterial_leaf_spot",
+    "grape__downy_mildew",
+    "grape__powdery_mildew",
+    "onion__purple_blotch",
+    "onion__stemphylium_leaf_blight",
+    "tomato__early_blight",
+    "tomato__late_blight",
+    "tomato__leaf_mold"
+  ],
+  "healthy_classes": [
+    "cotton__healthy",
+    "grape__healthy",
+    "onion__healthy",
+    "tomato__healthy"
+  ],
+  "safety_rules": [
+    "Healthy classes route to PREVENTION_ONLY.",
+    "Classification confidence is not outbreak probability.",
+    "Leaf wetness proxy must not be presented as measured leaf wetness.",
+    "Cotton bollworm is generic and requires species confirmation before species-specific IPM.",
+    "Weather must not directly estimate crop loss.",
+    "Personalized quantitative crop-loss percentages are not produced in V1.",
+    "Treatment recommendations must be retrieved from the knowledge base and officer workflow."
+  ],
+  "files": {
+    "engine": [
+      "engine/epidemiological_core.py",
+      "engine/crop_adapters.py",
+      "engine/farmer_interpretation.py",
+      "engine/impact_engine.py",
+      "engine/weather_adapter.py",
+      "engine/forecast_standardizer.py",
+      "engine/response_builder.py"
+    ],
+    "config": [
+      "config/farmer_status_map_v1.json",
+      "config/default_farmer_status_v1.json",
+      "config/pilot_locations_v1.json",
+      "config/class_source_map_v1.json",
+      "config/impact_source_registry_v1.json",
+      "config/source_registry_v1.json"
+    ],
+    "rules": [
+      "epidemiological_rules/MODEL2_EPIDEMIOLOGICAL_RULE_ENGINE_V1.json",
+      "impact_rules/MODEL2_IMPACT_EVIDENCE_REGISTRY_V1.json"
+    ]
+  },
+  "package_status": "FROZEN",
+  "final_behavioral_audit": {
+    "file": "validation/MODEL2_ALL_CLASS_CLEANROOM_AUDIT_V1.json",
+    "status": "PASS",
+    "classes_tested": 15,
+    "active_classes": 11,
+    "healthy_classes": 4
+  },
+  "integrity": {
+    "algorithm": "SHA-256",
+    "manifest_self_checksum_excluded": true,
+    "immutable_file_count": 17,
+    "checksums": {
+      "engine/__init__.py": "c475ed0ff88541864ee6b1fc0920f9aab1f46da13a87fe3c3fb48ccd4e593e7b",
+      "engine/epidemiological_core.py": "e7e21735e4e862967be4a3328d0fb6ca08e3c4e33e680d6c44d588eadcf418d6",
+      "engine/crop_adapters.py": "7dfb07782ee95d31846c4fd4ff58bcdca49a619d7ce9fd17c7e7004d7d99c125",
+      "engine/farmer_interpretation.py": "e22d116b19d9ee55793a00dd57939d2e9eb94cb2be2f9cc3105e09af399d4e04",
+      "engine/impact_engine.py": "87e7d99575621a984c8097669cb9b1da9c4434504f1a033a8d446a37ac905525",
+      "engine/weather_adapter.py": "9acc26ed89ddc5159da74119b35ca4408238fc9b333372b343542810a94cb3ce",
+      "engine/forecast_standardizer.py": "28ea96df657c66a4a713ab07d241ca4b5c9004c1c1115f982b0baa29a9518fca",
+      "engine/response_builder.py": "91b68c7b4559153b86affdf500291f9538af028e4a1337e858d65f88c1cac874",
+      "config/farmer_status_map_v1.json": "7343bd90d7b8acc2abf28d04a2085eaac80ec43ac56bfc13bf20da904ca2c853",
+      "config/default_farmer_status_v1.json": "fbf0328eac494be30ce487d50814c882d16bf674b29ee5eaf8a5bc7b51d249cf",
+      "config/pilot_locations_v1.json": "a1809a39b92f298e8e01aeacb1961e394f02f364f021e652c0ea85c66418101a",
+      "config/class_source_map_v1.json": "e65bd82afbe1dfa724fb3a0c7cc4a93cb964b02e863b6556e9c90683e426fb2e",
+      "config/impact_source_registry_v1.json": "b8d1f65d760930187ab063e315f737d65d4d89db460070ee1700ec49fd10f067",
+      "config/source_registry_v1.json": "efacaea0d0ec64eddec24abd389731c4fbd7468ebf0ad80b0ddbb060b91ad922",
+      "epidemiological_rules/MODEL2_EPIDEMIOLOGICAL_RULE_ENGINE_V1.json": "b5c3b021b944650f6eae3a79faccff06d305557b598e36e23928897fd243cdb5",
+      "impact_rules/MODEL2_IMPACT_EVIDENCE_REGISTRY_V1.json": "cf04a677a6faede9003a9bf64393ab799839f68c4c160d207c67cc8758547994",
+      "validation/MODEL2_ALL_CLASS_CLEANROOM_AUDIT_V1.json": "ad55ae345e3aa3aebcd574ef26f575a02a0f087bd2e2aa7420295e4bdde79820"
+    }
+  },
+  "finalized_at": "2026-09-13T21:49:36.738816"
+}

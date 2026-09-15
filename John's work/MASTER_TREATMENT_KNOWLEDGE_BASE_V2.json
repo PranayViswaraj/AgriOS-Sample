@@ -1,0 +1,1313 @@
+{
+    "metadata": {
+        "project": "AgroSmart",
+        "module": "Treatment and Recovery Knowledge Base",
+        "version": "2.0",
+        "classes": 15,
+        "purpose": "Evidence-backed disease/pest management knowledge for AI-assisted farmer advisory with mandatory Extension Officer supervision.",
+        "important_policy": {
+            "ai_does_not_replace_expert": true,
+            "chemical_actions_require_officer_approval": true,
+            "chemical_actions_require_regulatory_verification": true,
+            "recovery_is_dynamic": "Recovery duration is not fixed. Each treatment case progresses through reassessment checkpoints until controlled, recovered, escalated, or referred."
+        },
+        "update_notes": [
+            "Added evidence-backed grape bacterial leaf spot protocol.",
+            "Added full tomato leaf mold cultural and weather-risk protocol.",
+            "Closed the two major evidence gaps from Version 1.",
+            "Chemical recommendations remain hidden pending officer and regulatory verification."
+        ]
+    },
+    "source_registry": {
+        "TNAU_GRAPE_DOWNY": {
+            "authority": "Tamil Nadu Agricultural University",
+            "title": "Grapes - Downy Mildew",
+            "type": "official_extension",
+            "local_file": "TNAU Agritech Portal __ Crop Protection.pdf"
+        },
+        "TNAU_GRAPE_POWDERY": {
+            "authority": "Tamil Nadu Agricultural University",
+            "title": "Grapes - Powdery Mildew",
+            "type": "official_extension",
+            "local_file": "TNAU Agritech Portal __ Crop Protection1.pdf"
+        },
+        "ICAR_MICROBE_TECH": {
+            "authority": "Indian Council of Agricultural Research",
+            "title": "Microbe Based Technologies Developed by ICAR",
+            "type": "official_research_technology",
+            "local_file": "Technologies-compilation_NBAIM.pdf"
+        },
+        "ICAR_BIOPESTICIDES": {
+            "authority": "Indian Council of Agricultural Research",
+            "title": "ICAR Technologies: Biopesticides",
+            "type": "official_research_technology",
+            "local_file": "ICAR-Technologies-Biopesticides.pdf"
+        },
+        "TNAU_GRAPE_PRODUCTION": {
+            "authority": "Tamil Nadu Agricultural University",
+            "title": "Horticulture - Fruits - Grapes",
+            "type": "official_crop_production",
+            "local_file": "Horticulture __ Fruits__ Grapes.pdf"
+        },
+        "ICAR_DOGR": {
+            "authority": "ICAR - Directorate of Onion and Garlic Research",
+            "title": "Quinquennial Review / Onion and Garlic Technologies",
+            "type": "official_research_extension",
+            "local_file": "First Pages.cdr.pdf"
+        },
+        "NATIONAL_VEG_IPM": {
+            "authority": "National Horticulture Mission / Government of India",
+            "title": "Integrated Pest Management Schedule for Vegetables",
+            "type": "official_ipm_manual",
+            "local_file": "IPM-Schedule-for-vegetables.pdf"
+        },
+        "TNAU_COTTON_ALTERNARIA": {
+            "authority": "Tamil Nadu Agricultural University",
+            "title": "Cotton - Alternaria Leaf Blight",
+            "type": "official_extension",
+            "local_file": "TNAU Agritech Portal __ Crop Protection5.pdf"
+        },
+        "TNAU_COTTON_IPM": {
+            "authority": "Tamil Nadu Agricultural University",
+            "title": "IPM - Cotton",
+            "type": "official_ipm_extension",
+            "local_file": "TNAU Agritech Portal __ Crop Protection6.pdf"
+        },
+        "ICAR_AICRP_CROP": {
+            "authority": "Indian Council of Agricultural Research",
+            "title": "Research Achievements of AICRPs on Crop Sciences",
+            "type": "official_research",
+            "local_file": "Microsoft Word - AICRPsCropScience.docx.pdf"
+        },
+        "TNAU_TOMATO_EARLY": {
+            "authority": "Tamil Nadu Agricultural University",
+            "title": "Tomato - Early Blight",
+            "type": "official_extension",
+            "local_file": "TNAU Agritech Portal __ Crop Protection9.pdf"
+        },
+        "TNAU_TOMATO_LATE": {
+            "authority": "Tamil Nadu Agricultural University",
+            "title": "Tomato - Late Blight",
+            "type": "official_extension",
+            "local_file": "TNAU Agritech Portal __ Crop Protection10.pdf"
+        },
+        "JHS_TOMATO_LEAF_MOLD": {
+            "authority": "Journal of Horticultural Sciences",
+            "title": "In vitro susceptibility of Cladosporium isolates",
+            "type": "peer_reviewed_supporting_source",
+            "local_file": "27+08+Machuca.pdf",
+            "limitation": "Not sufficient as a standalone treatment guide for Passalora fulva leaf mold."
+        },
+        "PPQS_HERBICIDES_2024": {
+            "authority": "Central Insecticides Board and Registration Committee",
+            "title": "Major Uses of Pesticides - Herbicides",
+            "type": "regulatory_reference",
+            "local_file": "major_uses_of_pesticides_herbicides_as_on_31.03.2024.pdf",
+            "limitation": "Herbicide document only. Cannot validate disease fungicide or bollworm insecticide recommendations."
+        },
+        "NHB_GRAPE_DISEASES": {
+            "authority": "National Horticulture Board, Government of India",
+            "title": "Grapes - Diseases",
+            "type": "government_extension",
+            "local_file": "gra002.pdf",
+            "used_for": [
+                "grape__bacterial_leaf_spot",
+                "grape__downy_mildew",
+                "grape__powdery_mildew"
+            ]
+        },
+        "ICAR_NRCG_GRAPE_BLS_2017": {
+            "authority": "ICAR - National Research Centre for Grapes, Pune",
+            "title": "In Vitro Efficacy of Different Chemicals and Biological Agents Against Xanthomonas campestris pv. viticola Causing Bacterial Leaf Spot of Grapes",
+            "type": "peer_reviewed_research",
+            "local_file": "9_30_7_IJAS.pdf",
+            "important_limitation": "Laboratory in-vitro efficacy study. Biological/chemical results must not be treated as direct farmer field prescriptions."
+        },
+        "UMN_TOMATO_LEAF_MOLD": {
+            "authority": "University of Minnesota Extension",
+            "title": "Tomato Leaf Mold",
+            "type": "university_extension",
+            "local_file": "Tomato leaf mold _ UMN Extension.pdf"
+        },
+        "CORNELL_TOMATO_LEAF_MOLD": {
+            "authority": "Cornell Cooperative Extension / Cornell AgriTech",
+            "title": "Tomato Leaf Mold",
+            "type": "university_extension",
+            "local_file": "tomatoleafmold_factsheet.pdf"
+        },
+        "UCONN_TOMATO_LEAF_MOLD_2026": {
+            "authority": "University of Connecticut Integrated Pest Management",
+            "title": "Tomato Leaf Mold",
+            "type": "university_ipm_extension",
+            "local_file": "Tomato Leaf Mold _ Integrated Pest Management _ College of Agriculture, Health and Natural Resources _ University of Connecticut.pdf"
+        }
+    },
+    "treatment_case_workflow": {
+        "states": [
+            "detected",
+            "awaiting_extension_officer_review",
+            "approved",
+            "modified",
+            "rejected",
+            "treatment_active",
+            "follow_up_due",
+            "reassessment",
+            "farm_visit_requested",
+            "laboratory_referral",
+            "controlled",
+            "recovered",
+            "treatment_failed",
+            "specialist_referral"
+        ],
+        "initial_case": {
+            "required_farmer_inputs": [
+                "new_crop_image",
+                "crop_stage",
+                "approximate_crop_age",
+                "affected_area_or_number_of_plants",
+                "symptom_duration",
+                "recent_treatment_history"
+            ],
+            "automatically_attached": [
+                "model1_prediction",
+                "model1_confidence",
+                "top3_predictions",
+                "location",
+                "weather_conditions"
+            ]
+        },
+        "officer_actions": [
+            "approve_recommendation",
+            "modify_recommendation",
+            "reject_recommendation",
+            "request_more_images",
+            "request_more_information",
+            "schedule_farm_visit",
+            "request_field_sample",
+            "refer_for_laboratory_testing",
+            "refer_to_specialist"
+        ],
+        "follow_up_check": {
+            "farmer_inputs": [
+                "fresh_crop_images",
+                "symptoms_better_same_or_worse",
+                "affected_area_change",
+                "actions_completed",
+                "new_symptoms",
+                "optional_notes"
+            ],
+            "possible_decisions": [
+                "continue_current_management",
+                "modify_management",
+                "stop_specific_intervention",
+                "farm_visit",
+                "laboratory_referral",
+                "close_as_controlled",
+                "close_as_recovered"
+            ]
+        }
+    },
+    "classes": {
+        "grape__healthy": {
+            "class_id": "grape__healthy",
+            "crop": "Grape",
+            "condition": "Healthy",
+            "condition_type": "healthy",
+            "causal_agent": null,
+            "evidence_status": "supported",
+            "symptoms": [],
+            "favorable_conditions": {},
+            "management": {
+                "immediate_actions": [
+                    "No disease-specific treatment required.",
+                    "Continue regular crop monitoring.",
+                    "Maintain good vineyard sanitation.",
+                    "Continue appropriate irrigation, nutrition and canopy management."
+                ],
+                "cultural": [],
+                "biological": [],
+                "chemical": []
+            },
+            "monitoring": [
+                "Inspect foliage, shoots and bunches for new lesions or fungal growth.",
+                "Increase observation frequency during weather favourable for grape diseases."
+            ],
+            "crop_stage_rules": [],
+            "escalation": {
+                "farm_visit_if": [
+                    "Symptoms appear despite healthy AI prediction.",
+                    "Large areas show unexplained decline."
+                ]
+            },
+            "sources": [
+                "TNAU_GRAPE_PRODUCTION"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "regulatory_verification_required": true
+            }
+        },
+        "grape__downy_mildew": {
+            "class_id": "grape__downy_mildew",
+            "crop": "Grape",
+            "condition": "Downy Mildew",
+            "condition_type": "fungal_like_oomycete",
+            "causal_agent": "Plasmopara viticola",
+            "evidence_status": "supported",
+            "symptoms": [
+                "Irregular yellowish translucent spots on upper leaf surface.",
+                "White powdery/downy growth on lower surface.",
+                "Affected leaves become yellow, brown and dry.",
+                "Premature defoliation may occur.",
+                "Tender shoots may be dwarfed.",
+                "Berries may develop fungal growth, shrivel or develop soft rot."
+            ],
+            "favorable_conditions": {
+                "optimum_temperature_c": [
+                    20,
+                    22
+                ],
+                "relative_humidity_percent": [
+                    80,
+                    100
+                ],
+                "spread_factors": [
+                    "wind",
+                    "rain"
+                ]
+            },
+            "management": {
+                "immediate_actions": [
+                    "Flag affected vines for close monitoring.",
+                    "Inspect neighbouring vines for similar symptoms.",
+                    "Record recent rainfall and humidity.",
+                    "Extension Officer should verify diagnosis before chemical intervention."
+                ],
+                "cultural": [],
+                "biological": [
+                    {
+                        "method": "Trichoderma-based grape disease management",
+                        "details": "ICAR reports need-based foliar application of Trichoderma afroharzianum together with soil drenching of Trichoderma asperelloides 5R can minimize downy mildew incidence.",
+                        "source": "ICAR_MICROBE_TECH"
+                    }
+                ],
+                "chemical": [
+                    {
+                        "recommendation_from_source": "Bordeaux mixture 1% OR Metalaxyl + Mancozeb 0.4%.",
+                        "requires_extension_officer_approval": true,
+                        "regulatory_status": "requires_current_CIBRC_verification",
+                        "source": "TNAU_GRAPE_DOWNY"
+                    }
+                ]
+            },
+            "monitoring": [
+                "Reinspect newly emerging leaves and bunches.",
+                "Monitor closely following rainfall or prolonged high humidity."
+            ],
+            "crop_stage_rules": [],
+            "escalation": {
+                "farm_visit_if": [
+                    "Rapid spread across multiple vines.",
+                    "Bunch infection is observed.",
+                    "Management response is poor."
+                ],
+                "laboratory_referral_if": [
+                    "Visual symptoms are atypical.",
+                    "Officer cannot distinguish downy mildew from similar disorders."
+                ]
+            },
+            "sources": [
+                "TNAU_GRAPE_DOWNY",
+                "ICAR_MICROBE_TECH"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "regulatory_verification_required": true
+            }
+        },
+        "grape__powdery_mildew": {
+            "class_id": "grape__powdery_mildew",
+            "crop": "Grape",
+            "condition": "Powdery Mildew",
+            "condition_type": "fungal",
+            "causal_agent": "Uncinula necator",
+            "evidence_status": "supported",
+            "symptoms": [
+                "Powdery growth mainly on upper leaf surface.",
+                "Malformation and discoloration of leaves.",
+                "Dark brown discoloration of stems.",
+                "Flower infection may cause shedding and poor fruit set.",
+                "Berry infection may cause shedding or cracking."
+            ],
+            "favorable_conditions": {
+                "weather_description": "Sultry warm conditions with dull cloudy weather are highly favourable."
+            },
+            "management": {
+                "immediate_actions": [
+                    "Inspect nearby vines and bunches.",
+                    "Record disease extent and crop stage.",
+                    "Flag severe berry or flower infection for officer review."
+                ],
+                "cultural": [],
+                "biological": [
+                    {
+                        "method": "Trichoderma afroharzianum foliar management",
+                        "details": "ICAR reports alternating Trichoderma afroharzianum with sulphur reduced powdery mildew severity and fungicide applications.",
+                        "source": "ICAR_MICROBE_TECH"
+                    }
+                ],
+                "chemical": [
+                    {
+                        "recommendation_from_source": "Inorganic sulphur 0.25%, chinomethionate 0.1%, or dinocap 0.05% are listed by the source.",
+                        "requires_extension_officer_approval": true,
+                        "regulatory_status": "requires_current_CIBRC_verification",
+                        "source": "TNAU_GRAPE_POWDERY"
+                    }
+                ]
+            },
+            "monitoring": [
+                "Monitor young leaves, shoots, flowers and berries.",
+                "Reassess progression after officer-approved intervention."
+            ],
+            "crop_stage_rules": [],
+            "escalation": {
+                "farm_visit_if": [
+                    "Flower or bunch infection is extensive.",
+                    "Disease continues spreading despite intervention."
+                ]
+            },
+            "sources": [
+                "TNAU_GRAPE_POWDERY",
+                "ICAR_MICROBE_TECH"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "regulatory_verification_required": true
+            }
+        },
+        "grape__bacterial_leaf_spot": {
+            "class_id": "grape__bacterial_leaf_spot",
+            "crop": "Grape",
+            "condition": "Bacterial Leaf Spot",
+            "condition_type": "bacterial",
+            "causal_agent": "Xanthomonas campestris pv. viticola",
+            "evidence_status": "SUPPORTED",
+            "symptoms": [
+                "Minute water-soaked spots may appear on the lower leaf surface along major and lateral veins.",
+                "Spots may coalesce into larger patches.",
+                "Young growing shoots may be affected first.",
+                "Leaves, shoots and berries may become infected.",
+                "Berries may develop brownish-black lesions and later become small and shrivelled.",
+                "Necrotic or canker-like lesions may occur on shoots and petioles."
+            ],
+            "favorable_conditions": {
+                "temperature_c": [
+                    25,
+                    30
+                ],
+                "relative_humidity_percent": [
+                    80,
+                    90
+                ],
+                "higher_risk_periods_from_source": [
+                    "June-August",
+                    "February-March"
+                ],
+                "weather_risk_note": "Warm, humid conditions within the source ranges are favourable for disease development."
+            },
+            "management": {
+                "immediate_actions": [
+                    "Mark affected vines for close observation.",
+                    "Inspect nearby vines, young shoots and berries for similar water-soaked or dark lesions.",
+                    "Avoid moving between visibly affected and healthy plants unnecessarily before sanitizing tools.",
+                    "Collect photographic evidence from leaves, shoots and berries for Extension Officer review.",
+                    "Record recent temperature, humidity and rainfall."
+                ],
+                "cultural": [
+                    {
+                        "action": "Collect and safely dispose of infected plant parts.",
+                        "purpose": "Reduce disease inoculum and spread.",
+                        "farmer_visible": true,
+                        "source": "NHB_GRAPE_DISEASES"
+                    },
+                    {
+                        "action": "Maintain vineyard sanitation and sanitize tools used on symptomatic vines.",
+                        "farmer_visible": true,
+                        "source": "NHB_GRAPE_DISEASES"
+                    }
+                ],
+                "biological": [
+                    {
+                        "candidate": "Bacillus subtilis",
+                        "evidence": "Demonstrated inhibitory activity against Xanthomonas campestris pv. viticola under in-vitro conditions.",
+                        "evidence_level": "laboratory_in_vitro",
+                        "farmer_visible_as_treatment": false,
+                        "requires_extension_officer_review": true,
+                        "field_recommendation_status": "not_established_from_this_source",
+                        "source": "ICAR_NRCG_GRAPE_BLS_2017"
+                    },
+                    {
+                        "candidate": "Trichoderma asperelloides",
+                        "evidence": "Demonstrated antagonistic potential against the pathogen under in-vitro conditions.",
+                        "evidence_level": "laboratory_in_vitro",
+                        "farmer_visible_as_treatment": false,
+                        "requires_extension_officer_review": true,
+                        "field_recommendation_status": "not_established_from_this_source",
+                        "source": "ICAR_NRCG_GRAPE_BLS_2017"
+                    }
+                ],
+                "chemical": [
+                    {
+                        "source_evidence": "NHB source lists Streptocycline and copper/Bordeaux-based preventive treatments.",
+                        "farmer_visible": false,
+                        "requires_extension_officer_approval": true,
+                        "requires_regulatory_verification": true,
+                        "regulatory_status": "requires_current_CIBRC_PPQS_verification",
+                        "source": "NHB_GRAPE_DISEASES"
+                    },
+                    {
+                        "source_evidence": "The ICAR-NRCG-linked research study tested several chemicals in vitro.",
+                        "farmer_visible": false,
+                        "evidence_level": "laboratory_in_vitro",
+                        "requires_extension_officer_approval": true,
+                        "requires_regulatory_verification": true,
+                        "use_for_field_prescription": false,
+                        "source": "ICAR_NRCG_GRAPE_BLS_2017"
+                    }
+                ]
+            },
+            "monitoring": [
+                "Inspect newly emerging shoots and leaves.",
+                "Track whether lesions appear on additional vines.",
+                "Increase surveillance during warm and humid conditions.",
+                "Document whether berry symptoms appear."
+            ],
+            "crop_stage_rules": [
+                {
+                    "stage": "young_shoot_growth",
+                    "priority": "high",
+                    "reason": "Source indicates young growing shoots are affected first."
+                },
+                {
+                    "stage": "berry_development",
+                    "priority": "high_if_symptomatic",
+                    "action": "Inspect berries for brown-black lesions and shrivelling."
+                }
+            ],
+            "escalation": {
+                "schedule_farm_visit_if": [
+                    "Symptoms appear on multiple vines.",
+                    "Young shoots and berries are simultaneously affected.",
+                    "Rapid disease spread is reported.",
+                    "The farmer cannot safely remove affected material."
+                ],
+                "laboratory_referral_if": [
+                    "Bacterial disease cannot be confirmed visually.",
+                    "Symptoms overlap with fungal lesions or nutrient disorders.",
+                    "Disease progresses despite approved management.",
+                    "A high-value vineyard has widespread symptoms."
+                ],
+                "sample_suggestions_for_officer": [
+                    "Recently symptomatic leaf tissue.",
+                    "Affected young shoot tissue.",
+                    "Symptomatic berries where present."
+                ]
+            },
+            "sources": [
+                "NHB_GRAPE_DISEASES",
+                "ICAR_NRCG_GRAPE_BLS_2017"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "regulatory_verification_required": true
+            }
+        },
+        "onion__healthy": {
+            "class_id": "onion__healthy",
+            "crop": "Onion",
+            "condition": "Healthy",
+            "condition_type": "healthy",
+            "causal_agent": null,
+            "evidence_status": "supported",
+            "symptoms": [],
+            "favorable_conditions": {},
+            "management": {
+                "immediate_actions": [
+                    "No disease-specific treatment required.",
+                    "Continue disease and thrips scouting.",
+                    "Maintain good field drainage.",
+                    "Avoid excessive nitrogen fertilization."
+                ],
+                "cultural": [],
+                "biological": [],
+                "chemical": []
+            },
+            "monitoring": [
+                "ICAR-DOGR IPM recommends field scouting for onion thrips and diseases twice weekly."
+            ],
+            "crop_stage_rules": [],
+            "escalation": {},
+            "sources": [
+                "ICAR_DOGR",
+                "NATIONAL_VEG_IPM"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "regulatory_verification_required": true
+            }
+        },
+        "onion__purple_blotch": {
+            "class_id": "onion__purple_blotch",
+            "crop": "Onion",
+            "condition": "Purple Blotch",
+            "condition_type": "fungal",
+            "causal_agent": "Alternaria porri",
+            "evidence_status": "supported",
+            "symptoms": [
+                "Small white sunken spots develop initially.",
+                "Lesions enlarge and become eye-shaped under moist conditions.",
+                "Lesions become purple with broad chlorotic margins.",
+                "Severe infection may affect neck and bulb tissue."
+            ],
+            "favorable_conditions": {
+                "moist_conditions": "Lesions enlarge under moist conditions."
+            },
+            "management": {
+                "immediate_actions": [
+                    "Assess affected area and crop age.",
+                    "Improve drainage where water is accumulating.",
+                    "Check for simultaneous thrips pressure.",
+                    "Extension Officer reviews proposed intervention."
+                ],
+                "cultural": [
+                    "Crop rotation with non-host crops.",
+                    "Maintain good drainage.",
+                    "Use recommended fertilizer doses and avoid excessive nitrogen.",
+                    "Field sanitation and monitoring."
+                ],
+                "biological": [
+                    {
+                        "method": "Trichoderma-based IPM",
+                        "details": "Trichoderma viride is included in the national IPM recommendations; ICAR-DOGR also includes Trichoderma seed and field application in onion IPM.",
+                        "sources": [
+                            "NATIONAL_VEG_IPM",
+                            "ICAR_DOGR"
+                        ]
+                    }
+                ],
+                "chemical": [
+                    {
+                        "recommendation_from_source": "National vegetable IPM source lists Mancozeb, Chlorothalonil and Iprodione schedules.",
+                        "interval_days": 10,
+                        "requires_extension_officer_approval": true,
+                        "regulatory_status": "requires_current_CIBRC_verification",
+                        "source": "NATIONAL_VEG_IPM"
+                    }
+                ]
+            },
+            "monitoring": [
+                "Twice-weekly disease scouting under ICAR-DOGR IPM.",
+                "Record lesion expansion and percentage of affected foliage."
+            ],
+            "crop_stage_rules": [
+                {
+                    "stage": "30_to_60_days_after_transplanting",
+                    "note": "ICAR-DOGR identifies this as a peak foliar-disease management period.",
+                    "source": "ICAR_DOGR"
+                }
+            ],
+            "escalation": {
+                "farm_visit_if": [
+                    "Rapid spread despite management.",
+                    "Large field area becomes symptomatic."
+                ],
+                "laboratory_referral_if": [
+                    "Purple Blotch and Stemphylium cannot be differentiated.",
+                    "Mixed infection is suspected."
+                ]
+            },
+            "sources": [
+                "ICAR_DOGR",
+                "NATIONAL_VEG_IPM"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "regulatory_verification_required": true
+            }
+        },
+        "onion__stemphylium_leaf_blight": {
+            "class_id": "onion__stemphylium_leaf_blight",
+            "crop": "Onion",
+            "condition": "Stemphylium Leaf Blight",
+            "condition_type": "fungal",
+            "causal_agent": "Stemphylium vesicarium",
+            "evidence_status": "supported",
+            "symptoms": [
+                "Symptoms may appear from the 3-4 leaf stage.",
+                "Small yellow to orange flecks or streaks appear.",
+                "Lesions become elongated or spindle-shaped.",
+                "Spots may coalesce and blight large portions of foliage."
+            ],
+            "favorable_conditions": {
+                "seasonal_note": "National IPM source reports greater severity in rabi and during higher temperatures in March-April."
+            },
+            "management": {
+                "immediate_actions": [
+                    "Remove or isolate heavily affected crop refuse where practical.",
+                    "Assess drainage and plant density.",
+                    "Request officer confirmation because mixed infection with Purple Blotch may occur."
+                ],
+                "cultural": [
+                    "Field sanitation and destruction of infected crop refuse.",
+                    "Long rotation with non-host crops.",
+                    "Maintain good field drainage.",
+                    "Avoid excessive plant density."
+                ],
+                "biological": [],
+                "chemical": [
+                    {
+                        "recommendation_from_source": "Three to four sprays of Mancozeb 0.25% at 20-day intervals starting 60 days after transplanting are described in the source.",
+                        "requires_extension_officer_approval": true,
+                        "regulatory_status": "requires_current_CIBRC_verification",
+                        "source": "NATIONAL_VEG_IPM"
+                    }
+                ]
+            },
+            "monitoring": [
+                "Twice-weekly scouting is recommended in ICAR-DOGR onion IPM.",
+                "Track percentage foliage affected."
+            ],
+            "crop_stage_rules": [
+                {
+                    "stage": "3_to_4_leaf_stage",
+                    "action": "Begin heightened symptom surveillance."
+                },
+                {
+                    "stage": "60_days_after_transplanting",
+                    "action": "Source-based treatment window begins if treatment is required and approved."
+                }
+            ],
+            "escalation": {
+                "farm_visit_if": [
+                    "Rapid foliage blighting.",
+                    "Severe mixed Purple Blotch/Stemphylium symptoms."
+                ],
+                "laboratory_referral_if": [
+                    "Disease identity remains uncertain after officer review."
+                ]
+            },
+            "sources": [
+                "NATIONAL_VEG_IPM",
+                "ICAR_DOGR"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "regulatory_verification_required": true
+            }
+        },
+        "cotton__healthy": {
+            "class_id": "cotton__healthy",
+            "crop": "Cotton",
+            "condition": "Healthy",
+            "condition_type": "healthy",
+            "causal_agent": null,
+            "evidence_status": "supported",
+            "symptoms": [],
+            "favorable_conditions": {},
+            "management": {
+                "immediate_actions": [
+                    "No disease/pest-specific treatment required.",
+                    "Continue pest and disease monitoring.",
+                    "Maintain balanced fertilizer and irrigation practices."
+                ],
+                "cultural": [],
+                "biological": [],
+                "chemical": []
+            },
+            "monitoring": [
+                "Regular pest monitoring.",
+                "Assess biocontrol potential approximately every 10 days.",
+                "Maintain pheromone traps where bollworm surveillance is required."
+            ],
+            "crop_stage_rules": [],
+            "escalation": {},
+            "sources": [
+                "TNAU_COTTON_IPM",
+                "ICAR_AICRP_CROP"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "regulatory_verification_required": true
+            }
+        },
+        "cotton__alternaria_leaf_spot": {
+            "class_id": "cotton__alternaria_leaf_spot",
+            "crop": "Cotton",
+            "condition": "Alternaria Leaf Spot",
+            "condition_type": "fungal",
+            "causal_agent": "Alternaria macrospora",
+            "evidence_status": "supported",
+            "symptoms": [],
+            "favorable_conditions": {
+                "temperature_c": [
+                    25,
+                    28
+                ],
+                "high_humidity": true,
+                "intermittent_rain": true
+            },
+            "management": {
+                "immediate_actions": [
+                    "Record affected area.",
+                    "Inspect for crop residue-associated disease pressure.",
+                    "Increase surveillance during humid and rainy periods."
+                ],
+                "cultural": [
+                    "Remove and destroy infected plant residues.",
+                    "Perform deep summer ploughing.",
+                    "Avoid seed from infected crop."
+                ],
+                "biological": [
+                    {
+                        "method": "Bacillus subtilis BSC5",
+                        "source_schedule_days_after_sowing": [
+                            60,
+                            90,
+                            120
+                        ],
+                        "source": "TNAU_COTTON_ALTERNARIA"
+                    }
+                ],
+                "chemical": [
+                    {
+                        "recommendation_from_source": "TNAU lists multiple fungicide options and treatment points at 60, 90 and 120 DAS.",
+                        "requires_extension_officer_approval": true,
+                        "regulatory_status": "requires_current_CIBRC_verification",
+                        "source": "TNAU_COTTON_ALTERNARIA"
+                    },
+                    {
+                        "recommendation_from_source": "ICAR AICRP reports Dithane M-45 or copper oxychloride as two foliar sprays at 10-day interval.",
+                        "source": "ICAR_AICRP_CROP",
+                        "requires_extension_officer_approval": true,
+                        "regulatory_status": "requires_current_CIBRC_verification"
+                    }
+                ]
+            },
+            "monitoring": [],
+            "crop_stage_rules": [
+                {
+                    "days_after_sowing": [
+                        60,
+                        90,
+                        120
+                    ],
+                    "action": "TNAU source identifies these as treatment/biological-control checkpoints."
+                }
+            ],
+            "escalation": {},
+            "sources": [
+                "TNAU_COTTON_ALTERNARIA",
+                "ICAR_AICRP_CROP"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "regulatory_verification_required": true
+            }
+        },
+        "cotton__bacterial_blight": {
+            "class_id": "cotton__bacterial_blight",
+            "crop": "Cotton",
+            "condition": "Bacterial Blight",
+            "condition_type": "bacterial",
+            "causal_agent": null,
+            "evidence_status": "supported",
+            "symptoms": [],
+            "favorable_conditions": {},
+            "management": {
+                "immediate_actions": [
+                    "Inspect adjacent plants.",
+                    "Record spread and recent rainfall/irrigation.",
+                    "Officer verification required before bactericide recommendation."
+                ],
+                "cultural": [],
+                "biological": [
+                    {
+                        "method": "Biological antagonists",
+                        "details": "ICAR AICRP reports Flavobacterium and Pseudomonas fluorescens as effective against cotton bacterial blight.",
+                        "source": "ICAR_AICRP_CROP"
+                    }
+                ],
+                "chemical": [
+                    {
+                        "recommendation_from_source": "ICAR AICRP reports streptocycline 100 ppm + copper oxychloride 0.3% as foliar spray at 10-day interval.",
+                        "requires_extension_officer_approval": true,
+                        "regulatory_status": "requires_current_CIBRC_verification",
+                        "source": "ICAR_AICRP_CROP"
+                    }
+                ]
+            },
+            "monitoring": [
+                "Reassess lesion expansion before repeating any intervention."
+            ],
+            "crop_stage_rules": [],
+            "escalation": {
+                "laboratory_referral_if": [
+                    "Symptoms are atypical.",
+                    "Bacterial diagnosis remains uncertain.",
+                    "Poor response to approved management."
+                ]
+            },
+            "sources": [
+                "ICAR_AICRP_CROP"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "regulatory_verification_required": true
+            }
+        },
+        "cotton__bollworm": {
+            "class_id": "cotton__bollworm",
+            "crop": "Cotton",
+            "condition": "Bollworm",
+            "condition_type": "pest",
+            "causal_agent": null,
+            "evidence_status": "SUPPORTED_AS_BOLLWORM_COMPLEX_SPECIES_CONFIRMATION_REQUIRED",
+            "symptoms": [],
+            "favorable_conditions": {},
+            "management": {
+                "immediate_actions": [
+                    "Inspect squares, flowers and bolls for larvae and feeding damage.",
+                    "Check pheromone-trap activity.",
+                    "Do not assume Pink Bollworm species from Model 1 alone.",
+                    "Extension Officer should identify the bollworm species where possible."
+                ],
+                "cultural": [
+                    "Avoid cotton-after-cotton where possible.",
+                    "Use crop rotation.",
+                    "Use appropriate intercrops/trap crops where locally suitable.",
+                    "Hand collect and destroy larvae and damaged plant parts where feasible."
+                ],
+                "biological": [
+                    {
+                        "method": "Early-stage IPM",
+                        "details": "ICAR reports use of Trichogramma, neem and NPV during early crop growth as components of cotton IPM.",
+                        "source": "ICAR_AICRP_CROP"
+                    },
+                    {
+                        "method": "Natural-enemy conservation",
+                        "details": "Cotton IPM encourages biological-control fauna and need-based action rather than automatic spraying.",
+                        "source": "TNAU_COTTON_IPM"
+                    }
+                ],
+                "chemical": []
+            },
+            "monitoring": [
+                "Assess pest population approximately every 10 days.",
+                "Use pheromone traps for bollworm monitoring.",
+                "Use scouting and economic-threshold-based action.",
+                "Record crop stage and damaged fruiting structures."
+            ],
+            "crop_stage_rules": [
+                {
+                    "stage": "vegetative",
+                    "actions": [
+                        "Monitor trap/intercrop populations.",
+                        "Maintain pheromone traps.",
+                        "Use mechanical removal where practical."
+                    ]
+                },
+                {
+                    "stage": "flowering_and_boll_development",
+                    "actions": [
+                        "Increase monitoring of bollworm activity.",
+                        "Extension Officer determines whether threshold-based intervention is justified."
+                    ]
+                }
+            ],
+            "escalation": {
+                "farm_visit_if": [
+                    "Trap counts rise rapidly.",
+                    "Boll damage is increasing.",
+                    "Species identification is uncertain."
+                ],
+                "laboratory_referral_if": [
+                    "Species confirmation is essential for management decisions."
+                ]
+            },
+            "sources": [
+                "TNAU_COTTON_IPM",
+                "ICAR_AICRP_CROP"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "regulatory_verification_required": true
+            }
+        },
+        "tomato__healthy": {
+            "class_id": "tomato__healthy",
+            "crop": "Tomato",
+            "condition": "Healthy",
+            "condition_type": "healthy",
+            "causal_agent": null,
+            "evidence_status": "supported",
+            "symptoms": [],
+            "favorable_conditions": {},
+            "management": {
+                "immediate_actions": [
+                    "No disease-specific treatment required.",
+                    "Continue crop scouting.",
+                    "Maintain field sanitation.",
+                    "Avoid unnecessary pesticide application."
+                ],
+                "cultural": [],
+                "biological": [],
+                "chemical": []
+            },
+            "monitoring": [
+                "Watch lower foliage for Early Blight symptoms.",
+                "Increase surveillance during prolonged humid/cloudy conditions."
+            ],
+            "crop_stage_rules": [],
+            "escalation": {},
+            "sources": [
+                "NATIONAL_VEG_IPM"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "regulatory_verification_required": true
+            }
+        },
+        "tomato__early_blight": {
+            "class_id": "tomato__early_blight",
+            "crop": "Tomato",
+            "condition": "Early Blight",
+            "condition_type": "fungal",
+            "causal_agent": "Alternaria solani",
+            "evidence_status": "supported",
+            "symptoms": [
+                "Brown spots with concentric rings.",
+                "Yellow margins may surround lesions.",
+                "Symptoms may occur on leaves, stems and fruits."
+            ],
+            "favorable_conditions": {},
+            "management": {
+                "immediate_actions": [
+                    "Inspect lower leaves and surrounding plants.",
+                    "Remove heavily infected lower plant debris where appropriate.",
+                    "Assess canopy humidity and airflow."
+                ],
+                "cultural": [
+                    "Rotate with non-solanaceous crops.",
+                    "Use healthy seed from disease-free fruits.",
+                    "Practice field sanitation.",
+                    "Remove infected crop debris.",
+                    "Reduce relative humidity within the canopy."
+                ],
+                "biological": [],
+                "chemical": [
+                    {
+                        "recommendation_from_source": "National vegetable IPM source describes two chlorothalonil 0.2% sprays at an 8-day interval, starting soon after infection on floral parts.",
+                        "interval_days": 8,
+                        "requires_extension_officer_approval": true,
+                        "regulatory_status": "requires_current_CIBRC_verification",
+                        "source": "NATIONAL_VEG_IPM"
+                    }
+                ]
+            },
+            "monitoring": [
+                "Reassess after the first management checkpoint.",
+                "Track appearance of new lesions rather than expecting old lesions to disappear."
+            ],
+            "crop_stage_rules": [],
+            "escalation": {},
+            "sources": [
+                "TNAU_TOMATO_EARLY",
+                "NATIONAL_VEG_IPM"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "regulatory_verification_required": true
+            }
+        },
+        "tomato__late_blight": {
+            "class_id": "tomato__late_blight",
+            "crop": "Tomato",
+            "condition": "Late Blight",
+            "condition_type": "oomycete",
+            "causal_agent": "Phytophthora infestans",
+            "evidence_status": "supported",
+            "symptoms": [
+                "Water-soaked dark lesions on leaves and stems.",
+                "Lesions may expand rapidly.",
+                "White sporulation may appear.",
+                "Fruit may develop dark lesions and soft rot."
+            ],
+            "favorable_conditions": {
+                "weather_description": "Moist/cloudy conditions favour disease expression; the IPM source specifically discusses cold, cloudy and drizzling weather."
+            },
+            "management": {
+                "immediate_actions": [
+                    "Treat as high-priority because disease may spread rapidly.",
+                    "Inspect surrounding plants immediately.",
+                    "Remove infected debris/fruits according to officer guidance.",
+                    "Record current rainfall, humidity and cloud conditions."
+                ],
+                "cultural": [
+                    "Use healthy certified seed from disease-free areas.",
+                    "Remove infected crop debris and fruits.",
+                    "Use staking to reduce Phytophthora disease pressure."
+                ],
+                "biological": [],
+                "chemical": [
+                    {
+                        "recommendation_from_source": "Preventive Mancozeb 0.25% sprays are described during cloudy, cold and drizzling weather.",
+                        "source_interval_days": [
+                            5,
+                            7
+                        ],
+                        "requires_extension_officer_approval": true,
+                        "regulatory_status": "requires_current_CIBRC_verification",
+                        "source": "NATIONAL_VEG_IPM"
+                    },
+                    {
+                        "recommendation_from_source": "One Metalaxyl + Mancozeb 0.2% treatment is described when applied within two days of infection. The source explicitly states repetitive sprays should not be given.",
+                        "repeat": false,
+                        "requires_extension_officer_approval": true,
+                        "regulatory_status": "requires_current_CIBRC_verification",
+                        "source": "NATIONAL_VEG_IPM"
+                    }
+                ]
+            },
+            "monitoring": [
+                "Short-interval reassessment because late blight may progress rapidly.",
+                "Monitor weather risk and new lesion development."
+            ],
+            "crop_stage_rules": [],
+            "escalation": {
+                "farm_visit_if": [
+                    "Rapid multi-plant spread.",
+                    "Fruit infection is present.",
+                    "Disease progresses despite intervention."
+                ],
+                "laboratory_referral_if": [
+                    "Diagnosis is uncertain.",
+                    "Atypical symptoms are present."
+                ]
+            },
+            "sources": [
+                "TNAU_TOMATO_LATE",
+                "NATIONAL_VEG_IPM"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "regulatory_verification_required": true
+            }
+        },
+        "tomato__leaf_mold": {
+            "class_id": "tomato__leaf_mold",
+            "crop": "Tomato",
+            "condition": "Leaf Mold",
+            "condition_type": "fungal",
+            "causal_agent": "Passalora fulva",
+            "evidence_status": "SUPPORTED_WITH_EXTENSION_SOURCES",
+            "symptoms": [
+                "Older/lower leaves are commonly affected first.",
+                "Pale green to yellow spots develop on the upper leaf surface.",
+                "Olive-green to brown velvety fungal growth develops on the corresponding lower leaf surface.",
+                "Lesions may enlarge, turn brown and become necrotic.",
+                "Severely infected leaves may wither, die or drop.",
+                "In severe disease, blossoms and fruit may also be affected."
+            ],
+            "favorable_conditions": {
+                "relative_humidity_threshold_percent": 85,
+                "high_risk_if_rh_at_or_above": true,
+                "optimal_temperature_c_approx": [
+                    22,
+                    24
+                ],
+                "uconn_temperature_range_c_approx": [
+                    20,
+                    25
+                ],
+                "risk_factors": [
+                    "high humidity",
+                    "prolonged leaf wetness",
+                    "poor airflow",
+                    "overhead irrigation",
+                    "condensation",
+                    "infected crop debris"
+                ],
+                "new_spore_cycle_days_under_favorable_conditions": [
+                    10,
+                    12
+                ]
+            },
+            "management": {
+                "immediate_actions": [
+                    "Inspect the lower surface of older leaves for olive-green or brown velvety growth.",
+                    "Reduce avoidable leaf wetness.",
+                    "Avoid overhead irrigation where practical.",
+                    "Increase airflow around plants.",
+                    "Separate or mark heavily symptomatic plants for Extension Officer assessment.",
+                    "Photograph both upper and lower surfaces of leaves."
+                ],
+                "cultural": [
+                    {
+                        "action": "Use drip irrigation and avoid wetting foliage.",
+                        "farmer_visible": true,
+                        "sources": [
+                            "UMN_TOMATO_LEAF_MOLD",
+                            "UCONN_TOMATO_LEAF_MOLD_2026"
+                        ]
+                    },
+                    {
+                        "action": "Space plants adequately to improve airflow.",
+                        "farmer_visible": true,
+                        "sources": [
+                            "UMN_TOMATO_LEAF_MOLD",
+                            "UCONN_TOMATO_LEAF_MOLD_2026"
+                        ]
+                    },
+                    {
+                        "action": "Stake, trellis or prune appropriately to increase airflow around foliage.",
+                        "farmer_visible": true,
+                        "sources": [
+                            "UMN_TOMATO_LEAF_MOLD",
+                            "UCONN_TOMATO_LEAF_MOLD_2026"
+                        ]
+                    },
+                    {
+                        "action": "Remove and dispose of infected plant material.",
+                        "farmer_visible": true,
+                        "sources": [
+                            "CORNELL_TOMATO_LEAF_MOLD",
+                            "UCONN_TOMATO_LEAF_MOLD_2026"
+                        ]
+                    },
+                    {
+                        "action": "Sanitize tools, stakes, trellises and equipment that contacted infected plants.",
+                        "farmer_visible": true,
+                        "sources": [
+                            "UMN_TOMATO_LEAF_MOLD",
+                            "CORNELL_TOMATO_LEAF_MOLD",
+                            "UCONN_TOMATO_LEAF_MOLD_2026"
+                        ]
+                    },
+                    {
+                        "action": "Remove crop residue after the production cycle.",
+                        "farmer_visible": true,
+                        "sources": [
+                            "UMN_TOMATO_LEAF_MOLD",
+                            "UCONN_TOMATO_LEAF_MOLD_2026"
+                        ]
+                    },
+                    {
+                        "action": "Use clean seed from a reputable source.",
+                        "farmer_visible": true,
+                        "sources": [
+                            "CORNELL_TOMATO_LEAF_MOLD"
+                        ]
+                    }
+                ],
+                "biological": [],
+                "chemical": [
+                    {
+                        "source_note": "UMN and Cornell discuss fungicide options for their jurisdictions.",
+                        "farmer_visible": false,
+                        "requires_extension_officer_approval": true,
+                        "requires_regulatory_verification": true,
+                        "regulatory_status": "requires_current_CIBRC_PPQS_verification_for_India",
+                        "important_note": "Foreign extension pesticide recommendations must not be directly transferred to Indian use.",
+                        "sources": [
+                            "UMN_TOMATO_LEAF_MOLD",
+                            "CORNELL_TOMATO_LEAF_MOLD"
+                        ]
+                    }
+                ]
+            },
+            "monitoring": [
+                "Increase scouting when RH approaches or exceeds 85%.",
+                "Inspect older/lower leaves first.",
+                "Photograph both leaf surfaces during follow-up.",
+                "Track whether new lesions appear after humidity reduction.",
+                "Reassess within approximately 7 days for active cases.",
+                "Be aware that under favorable conditions new spores may form within roughly 10-12 days."
+            ],
+            "crop_stage_rules": [
+                {
+                    "stage": "vegetative_to_fruiting",
+                    "action": "Maintain airflow and humidity control throughout crop growth."
+                },
+                {
+                    "stage": "flowering_or_fruiting",
+                    "action": "Escalate officer review if blossoms or fruits show symptoms because severe disease can affect them."
+                }
+            ],
+            "weather_decision_rules": [
+                {
+                    "condition": "relative_humidity >= 85",
+                    "risk": "high",
+                    "actions": [
+                        "increase scouting frequency",
+                        "avoid overhead irrigation",
+                        "increase ventilation or airflow",
+                        "inspect lower leaves"
+                    ]
+                },
+                {
+                    "condition": "relative_humidity >= 85 and temperature approximately 20-25C",
+                    "risk": "very_high",
+                    "actions": [
+                        "prioritize monitoring",
+                        "flag active cases for closer follow-up"
+                    ]
+                }
+            ],
+            "escalation": {
+                "schedule_farm_visit_if": [
+                    "Disease is spreading despite humidity and sanitation measures.",
+                    "Large areas of crop are affected.",
+                    "Significant defoliation is occurring.",
+                    "Blossoms or fruits are affected."
+                ],
+                "laboratory_referral_if": [
+                    "Leaf Mold cannot be differentiated from another foliar disease.",
+                    "Symptoms resemble nutrient deficiency.",
+                    "Symptoms are atypical.",
+                    "Management response is poor despite verified diagnosis."
+                ],
+                "differential_diagnosis_flags": [
+                    "magnesium deficiency",
+                    "Botrytis / gray mold",
+                    "other foliar fungal diseases"
+                ]
+            },
+            "sources": [
+                "UMN_TOMATO_LEAF_MOLD",
+                "CORNELL_TOMATO_LEAF_MOLD",
+                "UCONN_TOMATO_LEAF_MOLD_2026",
+                "JHS_TOMATO_LEAF_MOLD"
+            ],
+            "safety": {
+                "extension_officer_review_required": true,
+                "chemical_recommendations_are_not_automatic": true,
+                "foreign_pesticide_guidance_not_directly_transferable": true,
+                "regulatory_verification_required": true
+            }
+        }
+    }
+}
