@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AgroSmart | Farmer Dashboard</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="mobile.css"><script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.20.1/dist/ort.min.js"></script><style>
+  .quick-summary{margin:1rem 0 .6rem}
+  .summary-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.7rem;margin-top:.8rem}
+  .summary-card{padding:.8rem .7rem;border-radius:16px;border:1px solid #dfe9e2;background:linear-gradient(180deg,#ffffff,#f3f8f2);display:flex;flex-direction:column;gap:.3rem}
+  .summary-card strong{font-size:1.3rem;letter-spacing:-.05em}
+  .summary-card small{color:var(--muted);font-size:.68rem;text-transform:uppercase;letter-spacing:.08em}
+  .summary-card.green strong{color:#1b6d52}.summary-card.gold strong{color:#9d6c0c}.summary-card.blue strong{color:#2b6a96}
+  .quick-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem;margin-top:.8rem}
+  .quick-action{padding:.75rem .7rem;border-radius:14px;border:1px solid #dfe9e2;background:#fff;display:flex;align-items:center;justify-content:center;gap:.45rem;font-weight:700;color:var(--ink);cursor:pointer}
+  .quick-action span{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:9px;background:#edf5ef;color:var(--green)}
+  .checklist{display:grid;gap:.6rem;margin-top:.9rem}
+  .check-item{display:flex;align-items:center;justify-content:space-between;gap:.6rem;padding:.7rem .8rem;border-radius:12px;background:#f7f9f4;border:1px solid #e2e9e0;font-size:.78rem;color:var(--ink)}
+  .check-item .status{font-size:.72rem;padding:.2rem .55rem;border-radius:999px;background:#ecf4eb;color:#1d6a52;font-weight:700}
+  .chat-status{margin-top:.8rem;padding:.7rem .8rem;border-radius:12px;background:#edf7ef;border:1px solid #d6ead8;color:#1a5a47;font-weight:600;font-size:.8rem;display:flex;align-items:center;justify-content:space-between}
+  .chat-status .online-dot{width:9px;height:9px;border-radius:50%;background:#3da86d;display:inline-block;margin-right:.5rem;box-shadow:0 0 10px rgba(61,168,109,.7)}
+  .mini-cta{display:flex;justify-content:space-between;align-items:center;gap:.6rem;background:#fff7e5;border:1px solid #f0dfb0;border-radius:12px;padding:.7rem .8rem;margin-top:.9rem}
+  .mini-cta strong{display:block;font-size:.8rem}.mini-cta small{color:var(--muted)}
+</style></head><body><main class="dashboard-shell"><header class="dashboard-top"><div class="brand-lockup compact"><span class="brand-mark">अ</span><div><strong>AgroSmart</strong><small>Farmer dashboard</small></div></div><button id="logoutButton" class="text-button">Log out</button></header><section class="farm-strip"><div><small>My farm</small><strong id="farmTitle">Your farm</strong><span id="farmerTitle"></span></div><button id="gpsButton" class="small-button">Use GPS</button></section><section class="dashboard-heading"><span class="eyebrow" data-i18n="today">Today</span><h1><span data-i18n="hello">Hello</span>, <span id="dashboardFarmer">Farmer</span> 👋</h1><p data-i18n="intro">Your simple crop-care plan for today.</p></section><section class="feature-grid"><button class="feature-card green" data-target="scanPanel"><span>◉</span><strong data-i18n="scan">Scan crop</strong><small data-i18n="scanSub">Real image prediction</small></button><button class="feature-card blue" data-target="riskPanel"><span>◌</span><strong data-i18n="risk">Check risk</strong><small data-i18n="riskSub">Weather and field signals</small></button><button class="feature-card gold" data-target="followPanel"><span>✓</span><strong data-i18n="follow">Follow-up</strong><small data-i18n="followSub">Track crop recovery</small></button><button class="feature-card coral" id="openChat"><span>☎</span><strong data-i18n="chat">Talk to officer</strong><small data-i18n="chatSub">Text, photo, voice</small></button></section><section class="dashboard-panel" id="scanPanel"><div class="panel-title"><div><span class="eyebrow" data-i18n="early">Early action</span><h2 data-i18n="scanTitle">Scan a crop photo</h2></div><span class="status-tag">LOCAL</span></div><label class="dropzone"><input type="file" id="cropImage" accept="image/*" capture="environment"><span>📷</span><strong data-i18n="choosePhoto">Take or choose a clear leaf photo</strong><small data-i18n="noSave">The image is checked on this device and is not saved.</small></label><div id="predictionResult" class="prediction-result hidden"></div></section><section class="dashboard-panel" id="riskPanel"><div class="panel-title"><div><span class="eyebrow" data-i18n="farmHealth">Farm health</span><h2 data-i18n="riskTitle">Simple risk check</h2></div><span id="riskBadge" class="risk-badge">LOW</span></div><div class="input-grid"><label>Weather<select id="weatherInput"><option value="clear">Clear</option><option value="humid">Humid</option><option value="rain">Rain likely</option><option value="heat">Hot</option></select></label><label>Soil<select id="soilInput"><option value="balanced">Balanced</option><option value="wet">Too wet</option><option value="dry">Too dry</option></select></label><label>Crop stage<select id="stageInput"><option>Vegetative</option><option>Flowering</option><option>Fruiting</option><option>Maturity</option></select></label><label>Trap count<input id="trapInput" type="number" min="0" value="0"></label></div><button id="riskButton" class="button button-primary">Check my risk</button><div id="riskResult" class="result-copy"></div></section><section class="dashboard-panel"><div class="panel-title"><div><span class="eyebrow" data-i18n="advice">Advice</span><h2 data-i18n="adviceTitle">Safe next steps</h2></div><select id="adviceLanguage" class="mini-select"><option value="en">English</option><option value="ta">தமிழ்</option><option value="hi">हिंदी</option></select></div><div id="adviceResult" class="advice-box"></div></section><section class="dashboard-panel" id="followPanel"><div class="panel-title"><div><span class="eyebrow" data-i18n="monitoring">Monitoring</span><h2 data-i18n="followTitle">Record follow-up</h2></div></div><div class="input-grid"><label>Crop status<select id="followStatus"><option>Better</option><option>Same</option><option>Worse</option><option>New symptoms</option></select></label><label>Note<input id="followNote" placeholder="What changed?"></label></div><button id="followButton" class="button button-primary">Save checkpoint</button><div id="followResult" class="timeline"></div></section><footer class="footer-note">AgroSmart helps you act early. Confirm serious symptoms with an extension officer before using chemical products.</footer><section class="dashboard-panel quick-summary" id="quickSummary"><div class="panel-title"><div><span class="eyebrow">Field summary</span><h2>Today's crop overview</h2></div></div><div class="summary-grid"><div class="summary-card green"><small>Field health</small><strong id="fieldHealthValue">82%</strong></div><div class="summary-card gold"><small>Urgent alerts</small><strong id="alertValue">2</strong></div><div class="summary-card blue"><small>Next action</small><strong id="nextActionValue">Scout</strong></div></div><div class="quick-actions"><button class="quick-action" id="summaryChatBtn"><span>✆</span>Officer chat</button><button class="quick-action" id="summaryFollowBtn"><span>✓</span>Save check</button><button class="quick-action" id="summaryRiskBtn"><span>⚠</span>Risk review</button><button class="quick-action" id="summaryAdviceBtn"><span>💡</span>Advice</button></div><div class="checklist"><div class="check-item"><span>Inspect low-lying paddy patch</span><span class="status">Due now</span></div><div class="check-item"><span>Check irrigation schedule</span><span class="status">Today</span></div><div class="check-item"><span>Log new symptoms after rain</span><span class="status">Soon</span></div></div><div class="chat-status"><div><span class="online-dot"></span>Officer reply window open</div><strong>09:00–18:00</strong></div><div class="mini-cta"><div><strong>Need an urgent answer?</strong><small>Send a photo and the officer can guide next steps.</small></div><button class="button button-primary" id="miniChatTrigger">Chat now</button></div></section></main><aside class="chat-drawer" id="chatDrawer"><div class="chat-header"><div><span class="online-dot"></span><strong>Extension Office</strong><small>Replies are saved on this device</small></div><button id="closeChat" class="close-chat">×</button></div><div id="chatMessages" class="chat-messages"></div><div id="attachmentLabel" class="attachment-label hidden"></div><form id="chatForm" class="chat-composer"><button type="button" id="attachButton" class="composer-icon">＋</button><input id="chatImage" type="file" accept="image/*" hidden><input id="chatInput" placeholder="Type your message..."><button type="button" id="voiceButton" class="composer-icon">◉</button><button class="send-button">↑</button></form></aside><div id="toast" class="toast"></div><script src="dashboard.js?v=20260915-2"></script><script>
+  (function(){
+    const safeOpenChat = function(){
+      if (typeof openChat === 'function') { openChat(); }
+      const drawer = document.getElementById('chatDrawer');
+      if (drawer) drawer.classList.add('open');
+    };
+
+    const bindSummaryAction = function(id, action){
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('click', action);
+    };
+
+    const score = document.getElementById('fieldHealthValue');
+    if (score) score.textContent = '82%';
+    const alerts = document.getElementById('alertValue');
+    if (alerts) alerts.textContent = '2';
+    const action = document.getElementById('nextActionValue');
+    if (action) action.textContent = 'Scout';
+
+    bindSummaryAction('summaryChatBtn', safeOpenChat);
+    bindSummaryAction('miniChatTrigger', safeOpenChat);
+    bindSummaryAction('summaryFollowBtn', function(){
+      const note = document.getElementById('followNote');
+      if (note) { note.focus(); window.scrollTo({top: document.body.scrollHeight, behavior:'smooth'}); }
+      if (typeof showToast === 'function') showToast('Checkpoint reminder saved');
+    });
+    bindSummaryAction('summaryRiskBtn', function(){
+      const riskPanel = document.getElementById('riskPanel');
+      if (riskPanel) {
+        riskPanel.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+      if (typeof showToast === 'function') showToast('Risk review ready');
+    });
+    bindSummaryAction('summaryAdviceBtn', function(){
+      const advicePanel = document.getElementById('adviceResult');
+      if (advicePanel) {
+        advicePanel.innerHTML = '<strong>Key advice:</strong> Scout the wet patch, keep irrigation steady, and send a photo to the extension officer if lesions spread.';
+        advicePanel.scrollIntoView({behavior:'smooth', block:'center'});
+      }
+      if (typeof showToast === 'function') showToast('Advice updated');
+    });
+  })();
+</script></body></html>
